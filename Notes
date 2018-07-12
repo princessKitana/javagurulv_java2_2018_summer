@@ -15,7 +15,7 @@ Mini Order Back Office system
 
 Use-cases:
 1. User can add one or more products from predefined list and order them
-3. Order is being processed on next day and delivered on day after ordered
+3. Order is being processed on next day and delivered on day after
 2. User can modify his order until it has been started processing
 3. User can cancel his order until it has been started processing
 4. User is able to view his orders

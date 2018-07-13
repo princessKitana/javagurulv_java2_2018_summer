@@ -1,4 +1,4 @@
-package lv.javaguru.java2.Database;
+package lv.javaguru.java2.database;
 
 import lv.javaguru.java2.Product;
 

@@ -1,13 +1,13 @@
 package lv.javaguru.java2.services;
 
 import lv.javaguru.java2.database.Database;
-import lv.javaguru.java2.Product;
+import lv.javaguru.java2.Domain.Product;
 
 public class AddProductService {
 
     private Database database;
 
-    public void AddProductService(Database database) {
+    public AddProductService(Database database) {
         this.database = database;
     }
 

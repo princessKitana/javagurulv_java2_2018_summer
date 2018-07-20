@@ -19,3 +19,22 @@ AUTO_INCREMENT = 1002;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+---- POSTGRE ----
+
+CREATE TABLE products(
+id    integer PRIMARY KEY DEFAULT nextval('1'),
+title varchar(32) NOT NULL,
+description varchar(100) NOT NULL,
+date_added date
+);
+
+
+INSERT INTO products(id, title, description, date_added)
+VALUES
+ ('1', 'milk', '2%', '2018-09-01');
+
+
+select * from products
+where title='milk';

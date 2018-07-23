@@ -24,17 +24,16 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 ---- POSTGRE ----
 
 CREATE TABLE products(
-id    integer PRIMARY KEY DEFAULT nextval('1'),
+id    serial PRIMARY KEY,
 title varchar(32) NOT NULL,
 description varchar(100) NOT NULL,
-date_added date
+date_added date NOT NULL
 );
-
 
 INSERT INTO products(id, title, description, date_added)
 VALUES
- ('1', 'milk', '2%', '2018-09-01');
+ ( default, 'coffee', 'black', '2018-09-01');
 
 
 select * from products
-where title='milk';
+where title='coffee';

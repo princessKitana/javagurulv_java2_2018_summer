@@ -2,7 +2,6 @@ package lv.javaguru.java2;
 
 import lv.javaguru.java2.Views.*;
 import lv.javaguru.java2.database.Database;
-import lv.javaguru.java2.database.InMemoryDatabase;
 import lv.javaguru.java2.database.JDBCDataBaseImpl;
 import lv.javaguru.java2.services.AddProductService;
 import lv.javaguru.java2.services.PrintProductService;

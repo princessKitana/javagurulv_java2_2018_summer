@@ -37,3 +37,32 @@ VALUES
 
 select * from products
 where title='coffee';
+
+
+---Let's Ride ---
+CREATE TYPE status AS ENUM ('PENDING', 'CANCELLED', 'CLOSED');
+
+CREATE TABLE trip(
+id    bigserial PRIMARY KEY,
+driverId bigint NOT NULL,
+origin varchar(60) NOT NULL,
+destination varchar(60) NOT NULL,
+date date NOT NULL,
+time time NOT NULL,
+comment varchar(100),
+price decimal,
+status status
+);
+
+DROP table registeredUser;
+
+CREATE TABLE registeredUser(
+id    bigserial PRIMARY KEY,
+firstName varchar(50) NOT NULL,
+lastName varchar(50) NOT NULL,
+email varchar(200),
+phone varchar(50),
+login varchar(50),
+password varchar(50),
+isDriver BOOLEAN NOT NULL
+);

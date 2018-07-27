@@ -2,7 +2,7 @@ package lv.javaguru.java2;
 
 import lv.javaguru.java2.Views.*;
 import lv.javaguru.java2.database.Database;
-import lv.javaguru.java2.database.JDBCDataBaseImpl;
+import lv.javaguru.java2.database.JDBCDatabaseImpl;
 import lv.javaguru.java2.services.AddProductService;
 import lv.javaguru.java2.services.PrintProductService;
 import lv.javaguru.java2.services.RemoveProductService;
@@ -19,7 +19,7 @@ public class ShoppingListApplication {
         // 3. Print shopping list to console
         // 4. Exit
 
-        Database database = new JDBCDataBaseImpl();
+        Database database = new JDBCDatabaseImpl();
         AddProductService addProductService = new AddProductService(database);
         RemoveProductService removeProductService = new RemoveProductService(database);
         PrintProductService printProductService = new PrintProductService(database);

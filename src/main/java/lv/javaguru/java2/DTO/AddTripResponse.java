@@ -33,7 +33,7 @@ public class AddTripResponse {
         this.errors = errors;
     }
 
-    public boolean isSussess() {
+    public boolean isSuccess() {
         return success;
     }
 }

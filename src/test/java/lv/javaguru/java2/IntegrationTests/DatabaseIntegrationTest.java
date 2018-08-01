@@ -1,4 +1,4 @@
-package lv.javaguru.java2;
+package lv.javaguru.java2.IntegrationTests;
 
 import lv.javaguru.java2.Domain.Product;
 import lv.javaguru.java2.Domain.Trip;

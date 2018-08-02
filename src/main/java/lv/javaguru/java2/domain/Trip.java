@@ -1,4 +1,4 @@
-package lv.javaguru.java2.Domain;
+package lv.javaguru.java2.domain;
 
 import java.sql.Date;
 import java.time.LocalTime;

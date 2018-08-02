@@ -1,17 +1,17 @@
 package lv.javaguru.java2.services;
 
-import lv.javaguru.java2.Domain.Product;
+import lv.javaguru.java2.domain.Product;
 import lv.javaguru.java2.database.Database;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 public class RemoveProductService {
 
+    @Autowired
     private Database database;
-
-    public RemoveProductService(Database database) {
-        this.database = database;
-    }
 
     public boolean removeProductByTitle(String title) {
         Optional<Product> foundProduct = database.getByTitle(title);

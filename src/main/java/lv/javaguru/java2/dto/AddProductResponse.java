@@ -1,6 +1,4 @@
-package lv.javaguru.java2.DTO;
-
-import lv.javaguru.java2.DTO.Error;
+package lv.javaguru.java2.dto;
 
 import java.util.List;
 

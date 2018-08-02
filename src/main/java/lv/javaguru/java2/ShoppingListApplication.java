@@ -1,37 +1,35 @@
 package lv.javaguru.java2;
 
-import lv.javaguru.java2.Views.*;
+import lv.javaguru.java2.config.SpringAppConfig;
+import lv.javaguru.java2.views.*;
 import lv.javaguru.java2.database.Database;
 import lv.javaguru.java2.database.JDBCDatabaseImpl;
 import lv.javaguru.java2.services.AddProductService;
 import lv.javaguru.java2.services.PrintProductService;
 import lv.javaguru.java2.services.RemoveProductService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.*;
 
+// Use cases:
+// 1. Add product to list
+// 2. Remove product from list
+// 3. Print shopping list to console
+// 4. Exit
 
 public class ShoppingListApplication {
 
     public static void main(String[] args) {
-        // Use cases:
-        // 1. Add product to list
-        // 2. Remove product from list
-        // 3. Print shopping list to console
-        // 4. Exit
 
-        Database database = new JDBCDatabaseImpl();
-        AddProductService addProductService = new AddProductService(database);
-        RemoveProductService removeProductService = new RemoveProductService(database);
-        PrintProductService printProductService = new PrintProductService(database);
 
-        AddProductView addProductView = new AddProductView(addProductService);
-        RemoveProductView removeProductView = new RemoveProductView(removeProductService);
-        PrintProductView printProductListView = new PrintProductView(printProductService);
+        ApplicationContext context
+                = new AnnotationConfigApplicationContext(SpringAppConfig.class);
 
         Map<Integer, ConsoleView> menuMap = new HashMap<>();
-        menuMap.put(1, addProductView);
-        menuMap.put(2, removeProductView);
-        menuMap.put(3, printProductListView);
+        menuMap.put(1, context.getBean(AddProductView.class));
+        menuMap.put(2, context.getBean(RemoveProductView.class));
+        menuMap.put(3, context.getBean(PrintProductView.class));
         menuMap.put(4, new ExitView());
 
 

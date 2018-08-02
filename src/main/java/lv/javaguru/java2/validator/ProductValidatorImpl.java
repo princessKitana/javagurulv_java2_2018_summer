@@ -1,20 +1,20 @@
-package lv.javaguru.java2.Validator;
+package lv.javaguru.java2.validator;
 
-import lv.javaguru.java2.DTO.Error;
-import lv.javaguru.java2.Domain.Product;
+import lv.javaguru.java2.dto.Error;
+import lv.javaguru.java2.domain.Product;
 import lv.javaguru.java2.database.Database;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class ProductValidatorImpl implements ProductValidator {
 
+    @Autowired
     private Database database;
-
-    public ProductValidatorImpl(Database database) {
-        this.database = database;
-    }
 
     @Override
     public List<Error> validate(String title, String description) {

@@ -1,6 +1,6 @@
-package lv.javaguru.java2.Validator;
+package lv.javaguru.java2.validator;
 
-import lv.javaguru.java2.DTO.Error;
+import lv.javaguru.java2.dto.Error;
 
 import java.util.List;
 

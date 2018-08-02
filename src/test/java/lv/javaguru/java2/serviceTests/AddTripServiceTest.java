@@ -1,14 +1,19 @@
-package lv.javaguru.java2.service;
+package lv.javaguru.java2.serviceTests;
 
-import lv.javaguru.java2.DTO.AddTripResponse;
-import lv.javaguru.java2.DTO.Error;
-import lv.javaguru.java2.Domain.Trip;
-import lv.javaguru.java2.Validator.TripValidator;
+import lv.javaguru.java2.dto.AddTripResponse;
+import lv.javaguru.java2.dto.Error;
+import lv.javaguru.java2.domain.Trip;
+import lv.javaguru.java2.services.AddProductService;
+import lv.javaguru.java2.validator.TripValidator;
 import lv.javaguru.java2.database.Database;
 import lv.javaguru.java2.services.AddTripService;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.sql.Date;
 import java.time.LocalTime;
@@ -17,19 +22,16 @@ import java.util.List;
 
 import static org.junit.Assert.assertFalse;
 
+@RunWith(MockitoJUnitRunner.class)
 public class AddTripServiceTest {
 
+    @Mock
     private Database database;
-    private AddTripService service;
-    private TripValidator validator;
 
-    @Before
-    public void init() {
+    @Mock private TripValidator validator;
 
-        database = Mockito.mock(Database.class);
-        validator = Mockito.mock(TripValidator.class);
-        service = new AddTripService(validator, database);
-    }
+    @InjectMocks
+    private AddTripService service = new AddTripService();
 
     @Test
     public void shouldReturnFailedResponseWhenValidationErrorsExist() {

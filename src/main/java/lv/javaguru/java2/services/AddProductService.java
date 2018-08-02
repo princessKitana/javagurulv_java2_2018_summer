@@ -1,28 +1,24 @@
 package lv.javaguru.java2.services;
 
-import lv.javaguru.java2.DTO.AddProductResponse;
-import lv.javaguru.java2.DTO.Error;
-import lv.javaguru.java2.Validator.ProductValidator;
+import lv.javaguru.java2.dto.AddProductResponse;
+import lv.javaguru.java2.dto.Error;
+import lv.javaguru.java2.validator.ProductValidator;
 import lv.javaguru.java2.database.Database;
-import lv.javaguru.java2.Domain.Product;
+import lv.javaguru.java2.domain.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.util.List;
 
+@Component
 public class AddProductService {
 
+    @Autowired
     private Database database;
+
+    @Autowired
     private ProductValidator validator;
-
-    public AddProductService(ProductValidator validator,
-                             Database database) {
-        this.validator = validator;
-        this.database = database;
-    }
-
-    public AddProductService(Database database) {
-        this.database = database;
-    }
 
     public AddProductResponse addProduct(String title, String description) {
         List<Error> validationErrors = validator.validate(title, description);

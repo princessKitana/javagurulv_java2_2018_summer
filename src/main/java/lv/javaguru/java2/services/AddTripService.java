@@ -1,26 +1,22 @@
 package lv.javaguru.java2.services;
 
-import lv.javaguru.java2.DTO.AddProductResponse;
-import lv.javaguru.java2.DTO.AddTripResponse;
-import lv.javaguru.java2.DTO.Error;
-import lv.javaguru.java2.Domain.Product;
-import lv.javaguru.java2.Domain.Trip;
-import lv.javaguru.java2.Validator.ProductValidator;
-import lv.javaguru.java2.Validator.TripValidator;
+import lv.javaguru.java2.dto.AddTripResponse;
+import lv.javaguru.java2.dto.Error;
+import lv.javaguru.java2.domain.Trip;
+import lv.javaguru.java2.validator.TripValidator;
 import lv.javaguru.java2.database.Database;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.sql.Date;
 import java.util.List;
 
+@Component
 public class AddTripService {
+    @Autowired
     private Database database;
-    private TripValidator validator;
 
-    public AddTripService(TripValidator validator,
-                             Database database) {
-        this.validator = validator;
-        this.database = database;
-    }
+    @Autowired
+    private TripValidator validator;
 
     public AddTripResponse addTrip(Trip trip){
 

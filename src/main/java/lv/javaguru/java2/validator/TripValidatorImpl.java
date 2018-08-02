@@ -1,19 +1,20 @@
-package lv.javaguru.java2.Validator;
+package lv.javaguru.java2.validator;
 
-import lv.javaguru.java2.DTO.Error;
-import lv.javaguru.java2.Domain.Trip;
+import lv.javaguru.java2.dto.Error;
+import lv.javaguru.java2.domain.Trip;
 import lv.javaguru.java2.database.Database;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class TripValidatorImpl implements TripValidator{
+    @Autowired
     private Database database;
-    public TripValidatorImpl(Database database) {
-        this.database = database;
-    }
 
     @Override
     public List<Error> validate(Trip trip){

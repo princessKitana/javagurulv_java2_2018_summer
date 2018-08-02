@@ -1,14 +1,13 @@
 package lv.javaguru.java2.IntegrationTests;
 
-import lv.javaguru.java2.Domain.Product;
-import lv.javaguru.java2.Domain.Trip;
-import lv.javaguru.java2.Domain.User;
+import lv.javaguru.java2.domain.Product;
+import lv.javaguru.java2.domain.Trip;
+import lv.javaguru.java2.domain.User;
 import lv.javaguru.java2.database.Database;
 import lv.javaguru.java2.database.JDBCDatabaseImpl;
 import org.junit.Test;
 
 import java.sql.Date;
-import java.sql.Time;
 import java.time.LocalTime;
 import java.util.List;
 

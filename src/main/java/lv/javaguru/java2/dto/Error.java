@@ -1,4 +1,4 @@
-package lv.javaguru.java2.DTO;
+package lv.javaguru.java2.dto;
 
 public class Error {
 

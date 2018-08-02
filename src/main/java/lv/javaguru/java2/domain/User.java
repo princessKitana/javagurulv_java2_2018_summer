@@ -1,6 +1,4 @@
-package lv.javaguru.java2.Domain;
-
-import java.sql.Date;
+package lv.javaguru.java2.domain;
 
 public class User {
 

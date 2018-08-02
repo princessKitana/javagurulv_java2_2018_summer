@@ -1,12 +1,14 @@
-package lv.javaguru.java2.service;
+package lv.javaguru.java2.serviceTests;
 
-import lv.javaguru.java2.Domain.Product;
+import lv.javaguru.java2.domain.Product;
 import lv.javaguru.java2.database.Database;
-import lv.javaguru.java2.Validator.ProductValidator;
-import lv.javaguru.java2.Validator.ProductValidatorImpl;
-import lv.javaguru.java2.DTO.Error;
+import lv.javaguru.java2.validator.ProductValidator;
+import lv.javaguru.java2.validator.ProductValidatorImpl;
+import lv.javaguru.java2.dto.Error;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.util.List;
@@ -16,14 +18,12 @@ import static org.junit.Assert.assertEquals;
 
 public class ProductValidatorImplTest {
 
+    @Mock
     private Database database;
-    private ProductValidator validator;
 
-    @Before
-    public void init() {
-        database = Mockito.mock(Database.class);
-        validator = new ProductValidatorImpl(database);
-    }
+    @InjectMocks
+    private ProductValidator validator = new ProductValidatorImpl();
+
 
     @Test
     public void shouldReturnErrorWhenTitleIsNull() {

@@ -1,4 +1,4 @@
-package lv.javaguru.java2.IntegrationTests;
+package lv.javaguru.java2.integrationTests;
 
 import lv.javaguru.java2.domain.Product;
 import lv.javaguru.java2.domain.Trip;
@@ -8,6 +8,7 @@ import lv.javaguru.java2.database.JDBCDatabaseImpl;
 import org.junit.Test;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -17,31 +18,22 @@ public class DatabaseIntegrationTest {
 
     private Database database = new JDBCDatabaseImpl();
 
-    @Test
-    public void AddProduct() {
-        Product product = new Product();
-        product.setTitle("p");
-        product.setDescription("d");
-        long time = System.currentTimeMillis();
-        product.setDate_added(new Date(time));
-        database.addProduct(product);
-    }
 
-    @Test
-    public void getAllProducts() {
-        List<Product> all1 = database.getAllProducts();
-
-        Product product = new Product();
-        product.setTitle("p");
-        product.setDescription("d");
-        long time = System.currentTimeMillis();
-        product.setDate_added(new Date(time));
-        database.addProduct(product);
-
-        List<Product> all2 = database.getAllProducts();
-
-        assertEquals(all2.size() - all1.size(), 1);
-    }
+//    @Test
+//    public void getAllProducts() {
+//        List<Product> all1 = database.getAllProducts();
+//
+//        Product product = new Product();
+//        product.setTitle("p");
+//        product.setDescription("d");
+//        long time = System.currentTimeMillis();
+//        product.setDate_added(new Date(time));
+//        database.addProduct(product);
+//
+//        List<Product> all2 = database.getAllProducts();
+//
+//        assertEquals(all2.size() - all1.size(), 1);
+//    }
 
     @Test
     public void addTrip() {
@@ -49,13 +41,11 @@ public class DatabaseIntegrationTest {
         Trip trip = new Trip();
         trip.setOrigin("Riga");
         trip.setDestination("Liepaja");
-        long time = System.currentTimeMillis();
-        LocalTime time1 = LocalTime.of(22, 15);
-        trip.setDate(new Date(time));
-        trip.setTime(time1);
-        trip.setDriverId((long) 1123);
+        trip.setDate(Date.valueOf("2018-07-06"));
+        trip.setTime(Time.valueOf("14:00:00"));
+        trip.setDriverId((long) 1);
         trip.setComment("will pick up at Alfa");
-        trip.setPrice(2.56);
+        trip.setPrice(Double.parseDouble("2.56"));
         trip.setStatus("PENDING");
         database.addTrip(trip);
 

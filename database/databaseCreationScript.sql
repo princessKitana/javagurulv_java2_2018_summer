@@ -23,26 +23,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 ---- POSTGRE ----
 
-CREATE TABLE products(
-id    serial PRIMARY KEY,
-title varchar(32) NOT NULL,
-description varchar(100) NOT NULL,
-date_added date NOT NULL
-);
-
-INSERT INTO products(id, title, description, date_added)
-VALUES
- ( default, 'coffee', 'black', '2018-09-01');
-
-
-select * from products
-where title='coffee';
-
-
 ---Let's Ride ---
 CREATE TYPE status AS ENUM ('PENDING', 'CANCELLED', 'CLOSED');
 
-CREATE TABLE trip(
+CREATE TABLE trips(
 id    bigserial PRIMARY KEY,
 driverId bigint NOT NULL,
 origin varchar(60) NOT NULL,
@@ -54,9 +38,9 @@ price decimal,
 status status
 );
 
-DROP table registeredUser;
+DROP table users;
 
-CREATE TABLE registeredUser(
+CREATE TABLE users(
 id    bigserial PRIMARY KEY,
 firstName varchar(50) NOT NULL,
 lastName varchar(50) NOT NULL,

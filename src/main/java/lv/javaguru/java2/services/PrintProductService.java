@@ -2,6 +2,7 @@ package lv.javaguru.java2.services;
 
 import lv.javaguru.java2.domain.Product;
 import lv.javaguru.java2.database.Database;
+import lv.javaguru.java2.domain.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,8 +12,8 @@ public class PrintProductService {
     @Autowired
     private Database database;
 
-    public List<Product> getAllProducts(){
-        return database.getAllProducts();
+    public List<Trip> getAllTrips(){
+        return database.getAllTrips();
     }
 
 }

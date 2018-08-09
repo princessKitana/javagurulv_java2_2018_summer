@@ -1,7 +1,7 @@
 package lv.javaguru.java2.domain;
 
+import java.sql.Time;
 import java.sql.Date;
-import java.time.LocalTime;
 import java.util.List;
 
 public class Trip {
@@ -9,21 +9,29 @@ public class Trip {
     private String origin;
     private String destination;
     private Date date;
-    private LocalTime time;
-    private String status;
+    private Time time;
+    private String status ="PENDING";
     private Long driverId;
-    private List<Long> passangers; //?
+    private List<Long> passangers;
     private Double price;
     private String comment;
 
+    public Date getDate() {
+        return date;
+    }
 
-    public LocalTime getTime() {
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Time getTime() {
         return time;
     }
 
-    public void setTime(LocalTime time) {
+    public void setTime(Time time) {
         this.time = time;
     }
+
 
     public String getOrigin() {
         return origin;
@@ -64,17 +72,6 @@ public class Trip {
     public void setId(Long id) {
         this.id = id;
     }
-
-
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
 
     public String getStatus() {
         return status;

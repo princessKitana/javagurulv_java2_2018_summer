@@ -2,11 +2,6 @@ package lv.javaguru.java2;
 
 import lv.javaguru.java2.config.SpringAppConfig;
 import lv.javaguru.java2.views.*;
-import lv.javaguru.java2.database.Database;
-import lv.javaguru.java2.database.JDBCDatabaseImpl;
-import lv.javaguru.java2.services.AddProductService;
-import lv.javaguru.java2.services.PrintProductService;
-import lv.javaguru.java2.services.RemoveProductService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -18,7 +13,7 @@ import java.util.*;
 // 3. Print shopping list to console
 // 4. Exit
 
-public class ShoppingListApplication {
+public class Application {
 
     public static void main(String[] args) {
 
@@ -27,10 +22,10 @@ public class ShoppingListApplication {
                 = new AnnotationConfigApplicationContext(SpringAppConfig.class);
 
         Map<Integer, ConsoleView> menuMap = new HashMap<>();
-        menuMap.put(1, context.getBean(AddProductView.class));
         menuMap.put(2, context.getBean(RemoveProductView.class));
         menuMap.put(3, context.getBean(PrintProductView.class));
-        menuMap.put(4, new ExitView());
+        menuMap.put(4, context.getBean(AddTripView.class));
+        menuMap.put(5, new ExitView());
 
 
         while (true) {
@@ -45,19 +40,19 @@ public class ShoppingListApplication {
 
     private static void printProgramMenu() {
         System.out.println("Program Menu:");
-        System.out.println("1. Add product to list");
         System.out.println("2. Remove product from list");
         System.out.println("3. Print list to console");
-        System.out.println("4. Exit");
+        System.out.println("4. Add trip");
+        System.out.println("5. Exit");
     }
 
     private static int getFromUserMenuItemToExecute() {
 
         ArrayList<String> menuList = new ArrayList<String>();
         menuList.add("1");
-        menuList.add("2");
         menuList.add("3");
         menuList.add("4");
+        menuList.add("5");
 
         Scanner sc = new Scanner(System.in);
         String userInput;

@@ -1,5 +1,6 @@
 package lv.javaguru.java2.validator;
 
+import lv.javaguru.java2.database.JDBCDatabaseImpl;
 import lv.javaguru.java2.dto.Error;
 import lv.javaguru.java2.domain.Trip;
 import lv.javaguru.java2.database.Database;
@@ -7,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class TripValidatorImpl implements TripValidator{
-    @Autowired
-    private Database database;
+
+@Autowired
+Database database = new JDBCDatabaseImpl();
 
     @Override
     public List<Error> validate(Trip trip){
@@ -24,9 +25,7 @@ public class TripValidatorImpl implements TripValidator{
         checkDestinationNotBlank(trip.getDestination(), errors);
         checkPriceValid(trip.getPrice(), errors);
         checkDateValid(trip.getDate(), errors);
-        checkTimeValid(trip.getTime(), errors);
-
-        //TODO: checkTripDuplicates(trip, errors);
+        checkDriverExist(trip.getDriverId(), errors);
 
         return errors;
     }
@@ -49,31 +48,51 @@ public class TripValidatorImpl implements TripValidator{
 
     private void checkPriceValid(Double price, List<Error> errors) {
 
-        if (price == null || price.isNaN()|| price<0 || price >100 ) {
-            Error error = new Error("price", "Must be from 0.00 to 100.00");
+        try {
+            if (price < 0 || price > 100) {
+                Error error = new Error("price", "Must be from 0.00 to 100.00");
+                errors.add(error);
+            }
+        } catch (Exception ex) {
+            Error error = new Error("price", "Not valid");
             errors.add(error);
-        }
+         }
     }
 
     private void checkDateValid(Date date, List<Error> errors) {
 
-        //TODO add calendar day validation
         long time = System.currentTimeMillis();
         Date systemDate = new Date(time);
-        if (date == null || date.before(systemDate)) {
-            Error error = new Error("date", "Date must be set in future");
+
+        try {
+
+            if (date == null) {
+                Error error = new Error("date", "Date must be filled");
+                errors.add(error);
+                return;
+            }else {
+                if (date.before(systemDate)) {
+                    Error error = new Error("date", "Date must be in future");
+                    errors.add(error);
+                }
+            }
+        } catch (Exception ex) {
+            Error error = new Error("date", "Date not valid");
+
             errors.add(error);
         }
     }
 
-    private void checkTimeValid(LocalTime time, List<Error> errors) {
+    //TODO check time valid
 
-        LocalTime time1 = LocalTime.of(0, 0);
-        LocalTime time2 = LocalTime.of(23, 59);
 
-        if (time == null || time.isBefore(time1) || time.isAfter(time2)) {
-            Error error = new Error("time", "Must be from 0.00 till 23.59");
+    private void checkDriverExist(Long driverId, List<Error> errors) {
+
+        if (! database.checkUserExist(driverId)) {
+
+            Error error = new Error("driverId", "Driver not found");
             errors.add(error);
         }
     }
+
 }

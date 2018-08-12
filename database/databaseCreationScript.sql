@@ -22,8 +22,21 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 ---- POSTGRE ----
-
 ---Let's Ride ---
+DROP table users;
+
+CREATE TABLE users(
+id    bigserial PRIMARY KEY,
+firstName varchar(50),
+lastName varchar(50),
+email varchar(200),
+phone varchar(50) NOT NULL,
+login varchar(50) NOT NULL,
+password varchar(50) NOT NULL,
+isDriver BOOLEAN NOT NULL
+);
+
+
 CREATE TYPE status AS ENUM ('PENDING', 'CANCELLED', 'CLOSED');
 
 CREATE TABLE trips(
@@ -38,15 +51,3 @@ price decimal,
 status status
 );
 
-DROP table users;
-
-CREATE TABLE users(
-id    bigserial PRIMARY KEY,
-firstName varchar(50) NOT NULL,
-lastName varchar(50) NOT NULL,
-email varchar(200),
-phone varchar(50),
-login varchar(50),
-password varchar(50),
-isDriver BOOLEAN NOT NULL
-);

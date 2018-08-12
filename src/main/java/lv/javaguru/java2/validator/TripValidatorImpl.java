@@ -14,8 +14,11 @@ import java.util.List;
 @Component
 public class TripValidatorImpl implements TripValidator{
 
-@Autowired
-Database database = new JDBCDatabaseImpl();
+    private Database database;
+
+    public TripValidatorImpl(Database database) {
+        this.database = database;
+    }
 
     @Override
     public List<Error> validate(Trip trip){
@@ -25,7 +28,7 @@ Database database = new JDBCDatabaseImpl();
         checkDestinationNotBlank(trip.getDestination(), errors);
         checkPriceValid(trip.getPrice(), errors);
         checkDateValid(trip.getDate(), errors);
-        checkDriverExist(trip.getDriverId(), errors);
+        //checkDriverExist(trip.getDriverId(), errors);
 
         return errors;
     }
@@ -86,6 +89,7 @@ Database database = new JDBCDatabaseImpl();
     //TODO check time valid
 
 
+    //TODO driver validation
     private void checkDriverExist(Long driverId, List<Error> errors) {
 
         if (! database.checkUserExist(driverId)) {

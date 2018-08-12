@@ -1,22 +1,34 @@
 package lv.javaguru.java2.serviceTests;
 
+import lv.javaguru.java2.database.Database;
 import lv.javaguru.java2.domain.Trip;
+import lv.javaguru.java2.domain.User;
 import lv.javaguru.java2.dto.Error;
 import lv.javaguru.java2.validator.TripValidator;
 import lv.javaguru.java2.validator.TripValidatorImpl;
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 
 public class TripValidatorImplTest {
 
-    @InjectMocks
-    private TripValidator validator = new TripValidatorImpl();
+    private Database database;
+    private TripValidator validator;
+
+    @Before
+    public void init() {
+        database = Mockito.mock(Database.class);
+        validator = new TripValidatorImpl(database);
+    }
 
     @Test
     public void shouldReturnErrorsWhenOriginAndDestinationAreNull() {
@@ -171,4 +183,25 @@ public class TripValidatorImplTest {
 
     }
 
+//    @Test
+//    public void shouldNotReturnErrorWhenNoDriverExists() {
+//
+//        Trip trip = new Trip();
+//
+//        trip.setDate(Date.valueOf("2020-07-06"));
+//        trip.setTime(Time.valueOf("14:00:00"));
+//        trip.setDriverId((long) 0);
+//        trip.setComment("will pick up at Alfa");
+//        trip.setPrice(Double.parseDouble("100.99"));
+//        trip.setStatus("PENDING");
+//        trip.setOrigin("Riga");
+//        trip.setDestination("Jurmala");
+//
+//        List<Error> errors = validator.validate(trip);
+//
+//        assertEquals(1, errors.size());
+//        assertEquals("driverId", errors.get(0).getField() );
+//        assertEquals( "Driver not found", errors.get(0).getDescription());
+
+ //   }
 }

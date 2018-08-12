@@ -1,6 +1,5 @@
 package lv.javaguru.java2.integrationTests;
 
-import lv.javaguru.java2.domain.Product;
 import lv.javaguru.java2.domain.Trip;
 import lv.javaguru.java2.domain.User;
 import lv.javaguru.java2.database.Database;
@@ -9,8 +8,6 @@ import org.junit.Test;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.time.LocalTime;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -59,7 +56,6 @@ public class DatabaseIntegrationTest {
         user.setLastName("Pupkin");
         user.setLogin("test");
         user.setPassword("test");
-        user.setLogin("test");
         user.setPhone("+37127130976");
         user.setEmail("vasja@pupkin.com");
         user.setDriver(false);

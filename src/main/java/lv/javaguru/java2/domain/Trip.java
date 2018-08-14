@@ -1,19 +1,48 @@
 package lv.javaguru.java2.domain;
 
+import lv.javaguru.java2.TripStatus;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
 import java.sql.Time;
 import java.sql.Date;
 import java.util.List;
 
+@Entity
+@Table(name="trips")
 public class Trip {
+
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name="origin", nullable = false, length = 200)
     private String origin;
+
+    @Column(name="destination", nullable = false, length = 200)
     private String destination;
+
+    @Column(name="date", nullable = false)
     private Date date;
+
+    @Column(name="time", nullable = false)
     private Time time;
-    private String status ="PENDING";
+
+    @Column(name="status", nullable = false)
+    //@Type(type ="TripStatus")
+    private String status;
+
+    @Column(name="driverId", nullable = false) //TODO foreign key to user Id
     private Long driverId;
+
+    @Transient
     private List<Long> passangers;
+
+    @Column(name="price", nullable = false)
     private Double price;
+
+    @Column(name="comment",length = 200)
     private String comment;
 
     public Date getDate() {
@@ -31,7 +60,6 @@ public class Trip {
     public void setTime(Time time) {
         this.time = time;
     }
-
 
     public String getOrigin() {
         return origin;

@@ -20,39 +20,46 @@ public class AddTripView implements ConsoleView {
 
     public void execute() {
 
-            System.out.println();
-            System.out.println("---");
-            Trip trip = new Trip();
+        System.out.println();
+        System.out.println("---");
+        Trip trip = new Trip();
 
         try {
-            Scanner sc = new Scanner(System.in);
-            System.out.print("Enter trip origin:");
-            trip.setOrigin(sc.nextLine());
-            System.out.print("Enter trip destination:");
-            trip.setDestination(sc.nextLine());
-
-            System.out.print("Enter trip date:");
-            trip.setDate(Date.valueOf(sc.nextLine()));
-
-            System.out.print("Enter trip time:");
-            trip.setTime(Time.valueOf(sc.nextLine()));
-
-            System.out.print("Enter trip price:");
-            trip.setPrice(Double.parseDouble(sc.nextLine()));
-
-            System.out.print("Enter trip comment(optional):");
-            trip.setComment(sc.nextLine());
-
+            userInput(trip);
         }catch (Exception ex) {
-            //TODO chjo delatj????
             System.out.println("Not valid input");
+            userInput(trip);
         }
 
-        trip.setDriverId((long) 1);//mock
+        trip.setDriverId((long) 1);//mock;  TODO need to set user id
+        trip.setStatus("PENDING");
 
         addTripService.addTrip(trip);
 
         System.out.println("---");
         System.out.println();
+    }
+
+
+    private void userInput(Trip trip){
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter trip origin:");
+        trip.setOrigin(sc.nextLine());
+        System.out.print("Enter trip destination:");
+        trip.setDestination(sc.nextLine());
+
+        System.out.print("Enter trip date:");
+        trip.setDate(Date.valueOf(sc.nextLine()));
+
+        System.out.print("Enter trip time:");
+        trip.setTime(Time.valueOf(sc.nextLine()));
+
+        System.out.print("Enter trip price:");
+        trip.setPrice(Double.parseDouble(sc.nextLine()));
+
+        System.out.print("Enter trip comment(optional):");
+        trip.setComment(sc.nextLine());
+
     }
 }

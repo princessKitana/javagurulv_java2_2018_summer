@@ -64,7 +64,7 @@ public class RegisterUserValidatorImpl implements RegisterUserValidator {
     private void checkLoginNotExist(String login, List<Error> errors){
         Optional<User> user = database.getUserByLogin(login);
 
-        if (!user.isPresent()){
+        if (user.isPresent()){
             Error error = new Error("login", "Login already exist");
             errors.add(error);
         }

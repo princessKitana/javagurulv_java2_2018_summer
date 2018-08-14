@@ -1,19 +1,26 @@
 package lv.javaguru.java2.integrationTests;
 
+import lv.javaguru.java2.config.SpringAppConfig;
+import lv.javaguru.java2.database.Database;
 import lv.javaguru.java2.domain.Trip;
 import lv.javaguru.java2.domain.User;
-import lv.javaguru.java2.database.Database;
-import lv.javaguru.java2.database.JDBCDatabaseImpl;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.sql.Date;
 import java.sql.Time;
 
-import static org.junit.Assert.assertEquals;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = { SpringAppConfig.class })
 public class DatabaseIntegrationTest {
 
-    private Database database = new JDBCDatabaseImpl();
+    @Autowired
+    private Database database;
+
 
 
 //    @Test

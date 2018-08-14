@@ -27,27 +27,27 @@ DROP table users;
 
 CREATE TABLE users(
 id    bigserial PRIMARY KEY,
-firstName varchar(50),
-lastName varchar(50),
+firstName varchar(200),
+lastName varchar(200),
 email varchar(200),
-phone varchar(50) NOT NULL,
-login varchar(50) NOT NULL,
-password varchar(50) NOT NULL,
+phone varchar(200) NOT NULL,
+login varchar(200) NOT NULL,
+password varchar(200) NOT NULL,
 isDriver BOOLEAN NOT NULL
 );
 
 
-CREATE TYPE status AS ENUM ('PENDING', 'CANCELLED', 'CLOSED');
+--CREATE TYPE TripStatus AS ENUM ('PENDING', 'CANCELLED', 'CLOSED');
 
 CREATE TABLE trips(
 id    bigserial PRIMARY KEY,
-driverId bigint NOT NULL,
-origin varchar(60) NOT NULL,
-destination varchar(60) NOT NULL,
+driverId bigint NOT NULL, --product_no integer REFERENCES products (product_no), ; @OneToMany(mappedBy = "student"
+origin varchar(200) NOT NULL,
+destination varchar(200) NOT NULL,
 date date NOT NULL,
 time time NOT NULL,
-comment varchar(100),
-price decimal,
-status status
+comment varchar(200),
+price double precision,
+status varchar(200) --TripStatus
 );
 

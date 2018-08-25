@@ -1,7 +1,6 @@
 package lv.javaguru.java2;
 
 import lv.javaguru.java2.config.SpringAppConfig;
-import lv.javaguru.java2.services.RegisterUserService;
 import lv.javaguru.java2.views.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

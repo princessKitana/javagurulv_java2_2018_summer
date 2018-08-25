@@ -1,12 +1,10 @@
 package lv.javaguru.java2.domain;
 
-import lv.javaguru.java2.TripStatus;
-import org.hibernate.annotations.Type;
+import lv.javaguru.java2.buisnesslogic.TripStatus;
 
 import javax.persistence.*;
 import java.sql.Time;
 import java.sql.Date;
-import java.util.List;
 
 @Entity
 @Table(name="trips")
@@ -29,15 +27,23 @@ public class Trip {
     @Column(name="time", nullable = false)
     private Time time;
 
-    @Column(name="status", nullable = false)
-    //@Type(type ="TripStatus")
-    private String status;
+    @Column(name="passangerCount", nullable = false)
+    private int passangerCount;
 
-    @Column(name="driverId", nullable = false) //TODO foreign key to user Id
-    private Long driverId;
+    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
+    public TripStatus status;
 
-    @Transient
-    private List<Long> passangers;
+    @ManyToOne
+    @JoinColumn(name = "driverId", nullable = false )
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "vehicleId", nullable = false )
+    private Vehicle car;
+
+    //@Transient
+    //private List<Long> passangers;
 
     @Column(name="price", nullable = false)
     private Double price;
@@ -51,6 +57,14 @@ public class Trip {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public int getPassangerCount() {
+        return passangerCount;
+    }
+
+    public void setPassangerCount(int passangerCount) {
+        this.passangerCount = passangerCount;
     }
 
     public Time getTime() {
@@ -101,29 +115,44 @@ public class Trip {
         this.id = id;
     }
 
-    public String getStatus() {
+    public Vehicle getCar() {
+        return car;
+    }
+
+    public void setCar(Vehicle car) {
+        this.car = car;
+    }
+//    public Long getDriverId() {
+//        return driverId;
+//    }
+//
+//    public void setDriverId(Long driverId) {
+//        this.driverId = this.user.getId();
+//    }
+
+    public TripStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TripStatus status) {
         this.status = status;
     }
 
-    public Long getDriverId() {
-        return driverId;
+    public User getUser() {
+        return user;
     }
 
-    public void setDriverId(Long driverId) {
-        this.driverId = driverId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public List<Long> getPassangers() {
-        return passangers;
-    }
+    //public List<Long> getPassangers() {
+        //return passangers;
+    //}
 
-    public void setPassangers(List<Long> passangers) {
-        this.passangers = passangers;
-    }
+    //public void setPassangers(List<Long> passangers) {
+        //this.passangers = passangers;
+    //}
 
 
 }

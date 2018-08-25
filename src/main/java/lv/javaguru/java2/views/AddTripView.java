@@ -1,22 +1,21 @@
 package lv.javaguru.java2.views;
 
-import lv.javaguru.java2.database.Database;
+import lv.javaguru.java2.buisnesslogic.TripStatus;
+import lv.javaguru.java2.buisnesslogic.addtrip.AddTripRequest;
 import lv.javaguru.java2.domain.Trip;
-import lv.javaguru.java2.dto.Error;
-import lv.javaguru.java2.services.AddTripService;
+import lv.javaguru.java2.buisnesslogic.addtrip.AddTripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.time.LocalTime;
 import java.util.Scanner;
 
 @Component
 public class AddTripView implements ConsoleView {
 
     @Autowired
-    private AddTripService addTripService = new AddTripService();
+    private AddTripService addTripService;
 
     public void execute() {
 
@@ -31,10 +30,11 @@ public class AddTripView implements ConsoleView {
             userInput(trip);
         }
 
-        trip.setDriverId((long) 1);//mock;  TODO need to set user id
-        trip.setStatus("PENDING");
+        //trip.setDriverId((long) 1);//mock;  TODO need to set user id
+        trip.setStatus(TripStatus.PENDING);
 
-        addTripService.addTrip(trip);
+        AddTripRequest request = new AddTripRequest(trip);
+        addTripService.addTrip(request);
 
         System.out.println("---");
         System.out.println();

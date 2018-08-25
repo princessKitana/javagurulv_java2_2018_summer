@@ -4,14 +4,9 @@ Example: http://www.autostop.online/
 
 Use-cases:
 1. User can register
-3. User can add his vehicle parameters
-2. User can add trip
-3. User can cancel trip
+2. User can add his vehicle
+2. User can add/cancel trip
+4. User can view all trips
 4. Users can search trips by origin/destination
 5. Users can apply for trip
-6. User can cancel application for ride
-
-1. Simple GUI with possibility to add/modify/cancel
-2.
-3. DB (Postgre SQL); TODO: Data model
-4.
+6. User can cancel application for trip

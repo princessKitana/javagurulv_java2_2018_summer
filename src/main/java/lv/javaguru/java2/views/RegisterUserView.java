@@ -1,22 +1,19 @@
 package lv.javaguru.java2.views;
 
-import lv.javaguru.java2.domain.Trip;
+import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserRequest;
 import lv.javaguru.java2.domain.User;
-import lv.javaguru.java2.dto.RegisterUserResponse;
-import lv.javaguru.java2.services.RegisterUserService;
-import lv.javaguru.java2.validator.RegisterUserValidator;
+import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserResponse;
+import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.sql.Date;
-import java.sql.Time;
 import java.util.Scanner;
 
 @Component
 public class RegisterUserView implements ConsoleView{
 
     @Autowired
-    private RegisterUserService service;
+    private RegisterUserServiceImpl service;
 
     public void execute() {
 
@@ -45,7 +42,8 @@ public class RegisterUserView implements ConsoleView{
 
         newUser.setDriver(false);
 
-        RegisterUserResponse resp = service.registerUser(newUser);
+        RegisterUserRequest req = new RegisterUserRequest(newUser);
+        RegisterUserResponse resp = service.registerUser(req);
 
         System.out.println("Registartion:"+resp.isSuccess());
 

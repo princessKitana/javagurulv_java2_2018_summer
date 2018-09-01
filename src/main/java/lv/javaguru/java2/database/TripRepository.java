@@ -11,4 +11,6 @@ public interface TripRepository {
     List getAllTrips();
 
     void addTrip(Trip trip);
+
+    boolean checkTripExist(Long id, String status);
 }

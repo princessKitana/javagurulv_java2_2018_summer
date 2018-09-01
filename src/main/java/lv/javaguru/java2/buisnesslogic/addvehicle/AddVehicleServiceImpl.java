@@ -41,6 +41,7 @@ public class AddVehicleServiceImpl implements  AddVehicleService{
         car.setUser(driver);
 
         vehicleRepository.addVehicle(car);
+        //TODO set user isDriver=true
 
         return new AddVehicleResponse(car.getId());
     }

@@ -45,7 +45,6 @@ public class AddVehicleValidatorImplTest {
 
         car.setUser(user);
 
-
         Mockito.when(userRepository.checkUserExist(user.getId()))
                 .thenReturn(true);
 

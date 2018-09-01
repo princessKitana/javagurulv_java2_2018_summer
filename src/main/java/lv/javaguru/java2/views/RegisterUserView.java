@@ -1,6 +1,7 @@
 package lv.javaguru.java2.views;
 
 import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserRequest;
+import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserService;
 import lv.javaguru.java2.domain.User;
 import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserResponse;
 import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserServiceImpl;
@@ -13,7 +14,7 @@ import java.util.Scanner;
 public class RegisterUserView implements ConsoleView{
 
     @Autowired
-    private RegisterUserServiceImpl service;
+    private RegisterUserService service;
 
     public void execute() {
 

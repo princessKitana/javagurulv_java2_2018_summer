@@ -25,10 +25,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 ---Let's Ride ---
 ---- POSTGRE ----
 ---Let's Ride ---
-DROP table users;
-DROP TABLE trips;
-DROP TABLE vehicles;
-DROP TABLE tripPassangers;
+DROP table users,trips,vehicles, tripPassangers;
+
 
 CREATE TABLE users(
 id    bigserial PRIMARY KEY,
@@ -41,21 +39,6 @@ password varchar(200) NOT NULL,
 isDriver BOOLEAN NOT NULL
 );
 
-CREATE TABLE trips(
-id    bigserial PRIMARY KEY,
-driverId bigint NOT NULL references users(id),
-origin varchar(200) NOT NULL,
-destination varchar(200) NOT NULL,
-date date NOT NULL,
-time time NOT NULL,
-comment varchar(200),
-price double precision,
-passangerCount int NOT NULL,
-status varchar(200), -- TODO enum
-vehicleId bigint NOT NULL references vehicles(id),
-);
-
-
 CREATE TABLE vehicles(
 id    bigserial PRIMARY KEY,
 driverId bigint NOT NULL references users(id),
@@ -66,12 +49,26 @@ regNumber varchar(200)
 );
 
 
+CREATE TABLE trips(
+id    bigserial PRIMARY KEY,
+driverId bigint NOT NULL references users(id),
+origin varchar(200) NOT NULL,
+destination varchar(200) NOT NULL,
+date date NOT NULL,
+time time NOT NULL,
+comment varchar(200),
+price double precision,
+passangerCount int NOT NULL,
+status varchar(200),
+vehicleId bigint NOT NULL references vehicles(id)
+);
+
+
 CREATE TABLE tripPassangers(
 id    bigserial PRIMARY KEY,
 tripId bigint NOT NULL references trips(id),
 passangerId bigint NOT NULL references users(id)
 );
-
 
 --Insert test data
 INSERT INTO users

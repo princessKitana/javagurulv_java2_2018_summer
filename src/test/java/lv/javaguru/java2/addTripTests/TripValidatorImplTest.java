@@ -2,20 +2,14 @@ package lv.javaguru.java2.addTripTests;
 
 import lv.javaguru.java2.buisnesslogic.TripStatus;
 import lv.javaguru.java2.buisnesslogic.addtrip.AddTripRequest;
-import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserValidator;
-import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserValidatorImpl;
-import lv.javaguru.java2.database.Database;
 import lv.javaguru.java2.database.TripRepository;
-import lv.javaguru.java2.database.UserRepository;
 import lv.javaguru.java2.domain.Trip;
 import lv.javaguru.java2.Error;
 import lv.javaguru.java2.buisnesslogic.addtrip.TripValidator;
 import lv.javaguru.java2.buisnesslogic.addtrip.TripValidatorImpl;
-import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 
 import java.sql.Date;
 import java.sql.Time;

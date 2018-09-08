@@ -23,11 +23,13 @@ public class ApplyForTripValidatorImpl implements ApplyForTripValidator {
     @Override
     public List<Error> validate(ApplyForTripRequest request){
 
-            List<Error> errors = new ArrayList<>();
+        List<Error> errors = new ArrayList<>();
 
-            checkUserExist(request.getPassanger().getId()).ifPresent(errors::add);
-            checkPendingTripExist(request.getTrip().getId()).ifPresent(errors::add);
-            //TODO check user alreay apllied?
+        checkUserExist(request.getPassanger().getId()).ifPresent(errors::add);
+        checkPendingTripExist(request.getTrip().getId()).ifPresent(errors::add);
+        //TODO check user alreay apllied?
+        //TODO check user apllied is not trip driver
+        //TODO check passanger seats availiable
 
             return errors;
         }

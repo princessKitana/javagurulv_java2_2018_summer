@@ -1,13 +1,18 @@
-package lv.javaguru.java2.buisnesslogic.registeruser;
+package lv.javaguru.java2.buisnesslogic.user.register;
 
+import lv.javaguru.java2.buisnesslogic.ApplicationError;
+import lv.javaguru.java2.buisnesslogic.ApplicationException;
+import lv.javaguru.java2.buisnesslogic.user.get.GetUserResponse;
 import lv.javaguru.java2.database.UserRepository;
 import lv.javaguru.java2.domain.User;
 import lv.javaguru.java2.Error;
+import lv.javaguru.java2.web.dtos.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class RegisterUserServiceImpl implements RegisterUserService {
@@ -22,12 +27,10 @@ public class RegisterUserServiceImpl implements RegisterUserService {
     @Transactional
     public RegisterUserResponse registerUser(RegisterUserRequest request){
 
-        List<Error> validationErrors = validator.validate(request);
-
+        List<ApplicationError> validationErrors = validator.validate(request);
         if (!validationErrors.isEmpty()) {
-            return new RegisterUserResponse(validationErrors);
+            throw new ApplicationException(validationErrors);
         }
-
         // create new user
         User user = new User();
         user.setLogin(request.getLogin());

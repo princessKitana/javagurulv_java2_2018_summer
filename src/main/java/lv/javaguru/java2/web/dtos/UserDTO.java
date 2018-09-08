@@ -1,24 +1,34 @@
-package lv.javaguru.java2.buisnesslogic.registeruser;
+package lv.javaguru.java2.web.dtos;
 
-import lv.javaguru.java2.domain.User;
+public class UserDTO {
 
-public class RegisterUserRequest {
-
-    private String login;
+    private Long id;
+    private String login;    //@JsonProperty("user_login")
     private String password;
-
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
 
-    public RegisterUserRequest(User user) {
-        this.login = user.getLogin();
-        this.password = user.getPassword();
-        this.firstName = user.getFirstName();
-        this.lastName = user.getLastName();
-        this.email = user.getEmail();
-        this.phone = user.getPhone();
+    public UserDTO() {
+    }
+
+    public UserDTO(Long id, String login, String password, String firstName, String lastName, String email, String phone) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getLogin() {

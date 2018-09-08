@@ -1,10 +1,9 @@
 package lv.javaguru.java2.views;
 
-import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserRequest;
-import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserService;
+import lv.javaguru.java2.buisnesslogic.user.register.RegisterUserRequest;
+import lv.javaguru.java2.buisnesslogic.user.register.RegisterUserService;
 import lv.javaguru.java2.domain.User;
-import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserResponse;
-import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserServiceImpl;
+import lv.javaguru.java2.buisnesslogic.user.register.RegisterUserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

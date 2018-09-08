@@ -32,4 +32,13 @@ public class UserRepositoryImpl extends ORMRepository implements UserRepository 
         return user.getId() != null;
 
     }
+
+    @Override
+    public Optional<User> getUserById(Long id){
+
+        User user = (User) session().createCriteria(User.class)
+                .add(Restrictions.eq("id", id))
+                .uniqueResult();
+        return Optional.ofNullable(user);
+    }
 }

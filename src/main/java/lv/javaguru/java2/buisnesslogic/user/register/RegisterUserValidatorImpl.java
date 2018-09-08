@@ -1,5 +1,6 @@
-package lv.javaguru.java2.buisnesslogic.registeruser;
+package lv.javaguru.java2.buisnesslogic.user.register;
 
+import lv.javaguru.java2.buisnesslogic.ApplicationError;
 import lv.javaguru.java2.database.UserRepository;
 import lv.javaguru.java2.domain.User;
 import lv.javaguru.java2.Error;
@@ -19,9 +20,9 @@ public class RegisterUserValidatorImpl implements RegisterUserValidator {
     private UserRepository userRepository;
 
     @Override
-    public List<Error> validate(RegisterUserRequest request){
+    public List<ApplicationError> validate(RegisterUserRequest request){
 
-        List<Error> errors = new ArrayList<>();
+        List<ApplicationError> errors = new ArrayList<>();
 
         validateLogin(request.getLogin()).ifPresent(errors::add);
         validatePassword(request.getPassword()).ifPresent(errors::add);
@@ -33,39 +34,39 @@ public class RegisterUserValidatorImpl implements RegisterUserValidator {
     }
 
 
-    private Optional<Error> validateLogin(String login) {
+    private Optional<ApplicationError> validateLogin(String login) {
         if (login == null || login.isEmpty()) {
-            return Optional.of(new Error("login", "Cannot be empty"));
+            return Optional.of(new ApplicationError("login", "Cannot be empty"));
         } else {
             return Optional.empty();
         }
     }
 
-    private Optional<Error> validatePassword(String password) {
+    private Optional<ApplicationError> validatePassword(String password) {
         if (password == null || password.isEmpty()) {
-            return Optional.of(new Error("password", "Cannot be empty"));
+            return Optional.of(new ApplicationError("password", "Cannot be empty"));
         } else {
             return Optional.empty();
         }
     }
 
-    private Optional<Error> validatePhone(String phone){
+    private Optional<ApplicationError> validatePhone(String phone){
 
         if (phone == null || phone.isEmpty()) {
-            Error error = new Error("phone", "Cannot be empty");
+            ApplicationError error = new ApplicationError("phone", "Cannot be empty");
             return Optional.of(error);
         }else
             return Optional.empty();
     }
 
 
-    private Optional<Error> validateDuplicateLogin(String login){
+    private Optional<ApplicationError> validateDuplicateLogin(String login){
         if (login != null && !login.isEmpty()) {
 
             Optional<User> user = userRepository.getUserByLogin(login);
 
             if (user.isPresent()) {
-                Error error = new Error("login", "Already exist");
+                ApplicationError error = new ApplicationError("login", "Already exist");
                 return Optional.of(error);
             } else
                 return Optional.empty();
@@ -75,7 +76,7 @@ public class RegisterUserValidatorImpl implements RegisterUserValidator {
         }
     }
 
-    private Optional<Error> validateEmail(String email){
+    private Optional<ApplicationError> validateEmail(String email){
 
         //email is not mandatory
         if (email == null || email.isEmpty())
@@ -86,7 +87,7 @@ public class RegisterUserValidatorImpl implements RegisterUserValidator {
             Matcher matcher = pattern.matcher(email);
 
             if (!matcher.matches()) {
-                Error error = new Error("email", "Invalid format");
+                ApplicationError error = new ApplicationError("email", "Invalid format");
                 return Optional.of(error);
             } else
                 return Optional.empty();

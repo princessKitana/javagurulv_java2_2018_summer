@@ -1,4 +1,4 @@
-package lv.javaguru.java2.integrationTests;
+package lv.javaguru.java2.DBintegrationTests;
 
 import lv.javaguru.java2.buisnesslogic.TripStatus;
 import lv.javaguru.java2.config.SpringAppConfig;

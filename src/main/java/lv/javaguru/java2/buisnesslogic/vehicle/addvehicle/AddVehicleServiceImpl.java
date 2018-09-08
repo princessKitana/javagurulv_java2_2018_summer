@@ -1,6 +1,7 @@
-package lv.javaguru.java2.buisnesslogic.addvehicle;
+package lv.javaguru.java2.buisnesslogic.vehicle.addvehicle;
 
 
+import lv.javaguru.java2.buisnesslogic.ApplicationError;
 import lv.javaguru.java2.database.VehicleRepository;
 import lv.javaguru.java2.domain.User;
 import lv.javaguru.java2.domain.Vehicle;
@@ -24,7 +25,7 @@ public class AddVehicleServiceImpl implements  AddVehicleService{
     @Override
     public AddVehicleResponse addVehicle(AddVehicleRequest request){
 
-        List<Error> validationErrors = validator.validate(request);
+        List<ApplicationError> validationErrors = validator.validate(request);
 
         if (!validationErrors.isEmpty()) {
             return new AddVehicleResponse(validationErrors);

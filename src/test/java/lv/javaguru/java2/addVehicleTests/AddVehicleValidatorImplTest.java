@@ -1,9 +1,9 @@
 package lv.javaguru.java2.addVehicleTests;
 
 import lv.javaguru.java2.Error;
-import lv.javaguru.java2.buisnesslogic.addvehicle.AddVehicleRequest;
-import lv.javaguru.java2.buisnesslogic.addvehicle.VehicleValidator;
-import lv.javaguru.java2.buisnesslogic.addvehicle.VehicleValidatorImpl;
+import lv.javaguru.java2.buisnesslogic.vehicle.addvehicle.AddVehicleRequest;
+import lv.javaguru.java2.buisnesslogic.vehicle.addvehicle.VehicleValidator;
+import lv.javaguru.java2.buisnesslogic.vehicle.addvehicle.VehicleValidatorImpl;
 import lv.javaguru.java2.database.UserRepository;
 import lv.javaguru.java2.database.VehicleRepository;
 import lv.javaguru.java2.domain.User;
@@ -16,7 +16,6 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 

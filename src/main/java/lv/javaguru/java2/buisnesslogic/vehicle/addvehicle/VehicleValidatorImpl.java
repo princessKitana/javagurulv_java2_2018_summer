@@ -1,6 +1,7 @@
-package lv.javaguru.java2.buisnesslogic.addvehicle;
+package lv.javaguru.java2.buisnesslogic.vehicle.addvehicle;
 
 import lv.javaguru.java2.Error;
+import lv.javaguru.java2.buisnesslogic.ApplicationError;
 import lv.javaguru.java2.database.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,9 +17,9 @@ public class VehicleValidatorImpl implements VehicleValidator {
     UserRepository userRepository;
 
     @Override
-    public List<Error> validate(AddVehicleRequest request) {
+    public List<ApplicationError> validate(AddVehicleRequest request) {
 
-        List<Error> errors = new ArrayList<>();
+        List<ApplicationError> errors = new ArrayList<>();
 
         checkColorNotBlank(request.getColor()).ifPresent(errors::add);
         checkModelNotBlank(request.getModel()).ifPresent(errors::add);
@@ -27,31 +28,31 @@ public class VehicleValidatorImpl implements VehicleValidator {
         return errors;
     }
 
-    private Optional<Error> checkColorNotBlank(String color) {
+    private Optional<ApplicationError> checkColorNotBlank(String color) {
 
         if (color == null || color.isEmpty()) {
-            return Optional.of(new Error("color", "Cannot be empty"));
+            return Optional.of(new ApplicationError("color", "Cannot be empty"));
         } else
             return Optional.empty();
     }
 
-    private Optional<Error> checkModelNotBlank(String model) {
+    private Optional<ApplicationError> checkModelNotBlank(String model) {
 
         if (model == null || model.isEmpty()) {
-            return Optional.of(new Error("model", "Cannot be empty"));
+            return Optional.of(new ApplicationError("model", "Cannot be empty"));
         }else
             return Optional.empty();
     }
 
-    private Optional<Error> checkDriverExits(Long driverId) {
+    private Optional<ApplicationError> checkDriverExits(Long driverId) {
 
         if (driverId == null) {
-            return Optional.of(new Error("driverId", "Cannot be empty"));
+            return Optional.of(new ApplicationError("driverId", "Cannot be empty"));
         } else {
             if (userRepository.checkUserExist(driverId)) {
                 return Optional.empty();
             } else
-                return Optional.of(new Error("driverId", "Does not exist"));
+                return Optional.of(new ApplicationError("driverId", "Does not exist"));
         }
     }
 

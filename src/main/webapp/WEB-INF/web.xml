@@ -6,7 +6,7 @@
          version="3.0">
     <servlet>
         <servlet-name>HelloServlet</servlet-name>
-        <servlet-class>lv.javaguru.java2.servlets.HelloServlet</servlet-class>
+        <servlet-class>lv.javaguru.java2.web.servlets.HelloServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HelloServlet</servlet-name>

@@ -1,6 +1,6 @@
 package lv.javaguru.java2.addVehicleTests;
 
-import lv.javaguru.java2.buisnesslogic.addvehicle.*;
+import lv.javaguru.java2.buisnesslogic.vehicle.addvehicle.*;
 import lv.javaguru.java2.domain.User;
 import lv.javaguru.java2.domain.Vehicle;
 import org.junit.Test;

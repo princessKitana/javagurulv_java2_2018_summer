@@ -1,11 +1,12 @@
 package lv.javaguru.java2.registerUserTests;
 
-import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserRequest;
+import lv.javaguru.java2.buisnesslogic.ApplicationError;
+import lv.javaguru.java2.buisnesslogic.user.register.RegisterUserRequest;
 import lv.javaguru.java2.database.UserRepository;
 import lv.javaguru.java2.domain.User;
 import lv.javaguru.java2.Error;
-import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserValidator;
-import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserValidatorImpl;
+import lv.javaguru.java2.buisnesslogic.user.register.RegisterUserValidator;
+import lv.javaguru.java2.buisnesslogic.user.register.RegisterUserValidatorImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -33,10 +34,9 @@ public class RegisterUserValidatorImplTest {
 
         user.setFirstName("Vasja");
         user.setLastName("Pupkin");
-        //user.setDriver(false);
 
         RegisterUserRequest req = new RegisterUserRequest(user);
-        List<Error> errors = validator.validate(req);
+        List<ApplicationError> errors = validator.validate(req);
 
         assertEquals(3, errors.size());
         assertEquals("login", errors.get(0).getField() );
@@ -67,7 +67,7 @@ public class RegisterUserValidatorImplTest {
         user.setPhone("123456789");
 
         RegisterUserRequest req = new RegisterUserRequest(user);
-        List<Error> errors = validator.validate(req);
+        List<ApplicationError> errors = validator.validate(req);
 
         assertEquals(1, errors.size());
         assertEquals("login", errors.get(0).getField() );
@@ -85,7 +85,7 @@ public class RegisterUserValidatorImplTest {
         newUser.setEmail("hhh@mmm");
 
         RegisterUserRequest req = new RegisterUserRequest(newUser);
-        List<Error> errors = validator.validate(req);
+        List<ApplicationError> errors = validator.validate(req);
 
         assertEquals(1, errors.size());
         assertEquals("email", errors.get(0).getField() );

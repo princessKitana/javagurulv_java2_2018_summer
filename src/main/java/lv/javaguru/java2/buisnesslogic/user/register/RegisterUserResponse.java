@@ -1,4 +1,4 @@
-package lv.javaguru.java2.buisnesslogic.registeruser;
+package lv.javaguru.java2.buisnesslogic.user.register;
 
 import lv.javaguru.java2.Error;
 

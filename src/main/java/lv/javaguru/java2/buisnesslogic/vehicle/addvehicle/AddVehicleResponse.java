@@ -1,6 +1,7 @@
-package lv.javaguru.java2.buisnesslogic.addvehicle;
+package lv.javaguru.java2.buisnesslogic.vehicle.addvehicle;
 
 import lv.javaguru.java2.Error;
+import lv.javaguru.java2.buisnesslogic.ApplicationError;
 
 import java.util.List;
 
@@ -8,9 +9,9 @@ public class AddVehicleResponse {
 
     private boolean success;
     private Long vehicleId;
-    private List<Error> errors;
+    private List<ApplicationError> errors;
 
-    public List<Error> getErrors() {
+    public List<ApplicationError> getErrors() {
             return errors;
         }
     public Long getVehicleId() {
@@ -20,7 +21,7 @@ public class AddVehicleResponse {
         this.vehicleId = vehicleId;
     }
 
-    public void setErrors(List<Error> errors) {
+    public void setErrors(List<ApplicationError> errors) {
             this.errors = errors;
         }
         public AddVehicleResponse(Long vehicleId) {
@@ -28,7 +29,7 @@ public class AddVehicleResponse {
             this.vehicleId = vehicleId;
         }
 
-        public AddVehicleResponse(List<Error> errors) {
+        public AddVehicleResponse(List<ApplicationError> errors) {
             this.success = false;
             this.errors = errors;
         }

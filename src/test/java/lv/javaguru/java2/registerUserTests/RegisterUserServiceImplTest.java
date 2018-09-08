@@ -1,11 +1,12 @@
 package lv.javaguru.java2.registerUserTests;
 
-import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserRequest;
+import lv.javaguru.java2.buisnesslogic.ApplicationError;
+import lv.javaguru.java2.buisnesslogic.user.register.RegisterUserRequest;
 import lv.javaguru.java2.domain.User;
 import lv.javaguru.java2.Error;
-import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserResponse;
-import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserServiceImpl;
-import lv.javaguru.java2.buisnesslogic.registeruser.RegisterUserValidator;
+import lv.javaguru.java2.buisnesslogic.user.register.RegisterUserResponse;
+import lv.javaguru.java2.buisnesslogic.user.register.RegisterUserServiceImpl;
+import lv.javaguru.java2.buisnesslogic.user.register.RegisterUserValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -31,8 +32,8 @@ public class RegisterUserServiceImplTest {
     public void shouldReturnFailedResponseWhenValidationErrorsExist() {
 
 
-        List<Error> errors = Collections.singletonList(
-                new Error("login", "Cannot be empty")
+        List<ApplicationError> errors = Collections.singletonList(
+                new ApplicationError("login", "Cannot be empty")
         );
 
         User user = new User();

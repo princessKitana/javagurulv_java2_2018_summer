@@ -1,6 +1,4 @@
-package lv.javaguru.java2.buisnesslogic.registeruser;
-
-import lv.javaguru.java2.domain.User;
+package lv.javaguru.java2.buisnesslogic.user.register;
 
 public interface RegisterUserService {
 

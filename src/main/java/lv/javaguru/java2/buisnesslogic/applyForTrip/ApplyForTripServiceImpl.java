@@ -1,7 +1,6 @@
 package lv.javaguru.java2.buisnesslogic.applyForTrip;
 
 import lv.javaguru.java2.Error;
-import lv.javaguru.java2.buisnesslogic.addvehicle.VehicleValidator;
 import lv.javaguru.java2.database.TripPassangerRepository;
 import lv.javaguru.java2.domain.TripPassanger;
 import org.springframework.beans.factory.annotation.Autowired;

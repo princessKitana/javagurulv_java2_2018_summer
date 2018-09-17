@@ -28,7 +28,7 @@ Lesson 3:
    Product description can be omitted.
 7. Introduce Request/Response to business logic.
    When business logic can return different results,
-   for example request processed, or bunch of errors, then
+   for example request processed, or bunch of applicationErrors, then
    Request/Response object is a good practice to encapsulate
    requests and responses to business logic.
 8. Treat business logic component like a service (separate autonomous

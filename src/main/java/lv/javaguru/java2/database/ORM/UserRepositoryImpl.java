@@ -25,11 +25,12 @@ public class UserRepositoryImpl extends ORMRepository implements UserRepository 
     }
 
     @Override
-    public boolean checkUserExist(Long id){
+    public Optional<User> checkUserExist(Long id){
         User user = (User) session().createCriteria(User.class)
                 .add(Restrictions.eq("id", id))
                 .uniqueResult();
-        return user.getId() != null;
+
+        return Optional.ofNullable(user);
 
     }
 

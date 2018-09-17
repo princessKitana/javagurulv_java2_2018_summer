@@ -1,6 +1,8 @@
-package lv.javaguru.java2.buisnesslogic.addtrip;
+package lv.javaguru.java2.buisnesslogic.trip.addtrip;
 
 import lv.javaguru.java2.domain.Trip;
+import lv.javaguru.java2.web.dtos.TripDTO;
+
 import java.sql.Date;
 import java.sql.Time;
 

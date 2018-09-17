@@ -1,5 +1,6 @@
 package lv.javaguru.java2.database.ORM;
 
+import lv.javaguru.java2.buisnesslogic.TripStatus;
 import lv.javaguru.java2.database.TripRepository;
 import lv.javaguru.java2.domain.Trip;
 import lv.javaguru.java2.domain.User;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class TripRepositoryImpl extends ORMRepository implements TripRepository{
@@ -27,15 +29,22 @@ public class TripRepositoryImpl extends ORMRepository implements TripRepository{
     }
 
     @Override
-    public boolean checkTripExist(Long id, String status){
+    public boolean checkTripExist(Long id, TripStatus status){
 
         Trip trip = (Trip) session().createCriteria(Trip.class)
                 .add(Restrictions.eq("id", id))
                 .add(Restrictions.eq("status", status))
                 .uniqueResult();
-        return trip.getId() != null;
+        if (trip != null) {
+            return true;
+        } else return false;
+    }
 
+    public Optional<Trip> getTripById(Long id){
+        Trip trip = (Trip) session().createCriteria(Trip.class)
+                .add(Restrictions.eq("id", id))
+                .uniqueResult();
 
-
+        return Optional.ofNullable(trip);
     }
 }

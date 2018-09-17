@@ -1,7 +1,7 @@
 package lv.javaguru.java2.views;
 
 import lv.javaguru.java2.domain.Trip;
-import lv.javaguru.java2.buisnesslogic.gettrip.GetTripService;
+import lv.javaguru.java2.buisnesslogic.trip.get.GetTripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

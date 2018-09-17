@@ -1,4 +1,4 @@
-package lv.javaguru.java2.buisnesslogic.addtrip;
+package lv.javaguru.java2.buisnesslogic.trip.addtrip;
 
 import org.springframework.stereotype.Component;
 

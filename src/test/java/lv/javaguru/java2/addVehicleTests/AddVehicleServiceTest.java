@@ -1,16 +1,19 @@
 package lv.javaguru.java2.addVehicleTests;
 
+import lv.javaguru.java2.buisnesslogic.ApplicationError;
+import lv.javaguru.java2.buisnesslogic.ApplicationException;
 import lv.javaguru.java2.buisnesslogic.vehicle.addvehicle.*;
 import lv.javaguru.java2.domain.User;
 import lv.javaguru.java2.domain.Vehicle;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import lv.javaguru.java2.Error;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -36,15 +39,18 @@ public class AddVehicleServiceTest {
 
         AddVehicleRequest request = new AddVehicleRequest(car);
 
-        List<Error> errors = Collections.singletonList(
-                new Error("model", "Cannot be empty")
-        );
+        ApplicationError error = new ApplicationError("model", "Cannot be empty");
+        List<ApplicationError> errors = new ArrayList<>(  );
+        errors.add( error );
 
-        Mockito.when(validator.validate(request))
-                .thenReturn(errors);
+        Mockito.when(validator.validate(request)).thenReturn(errors);
 
-        AddVehicleResponse response = service.addVehicle(request);
+        try {
+            service.addVehicle(request);
+        }catch (ApplicationException e){
+            Assert.assertEquals("Cannot be empty", e.getErrors().get( 0 ).getDescription() );
+            Assert.assertEquals("model", e.getErrors().get( 0 ).getField() );
 
-        assertFalse(response.isSuccess());
+        }
     }
 }

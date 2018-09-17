@@ -1,6 +1,7 @@
-package lv.javaguru.java2.buisnesslogic.applyForTrip;
+package lv.javaguru.java2.buisnesslogic.trip.applyForTrip;
 
-import lv.javaguru.java2.Error;
+import lv.javaguru.java2.buisnesslogic.ApplicationError;
+import lv.javaguru.java2.buisnesslogic.ApplicationException;
 import lv.javaguru.java2.database.TripPassangerRepository;
 import lv.javaguru.java2.domain.TripPassanger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,13 @@ public class ApplyForTripServiceImpl implements ApplyForTripService{
     @Override
     public ApplyForTripResponse applyForTrip(ApplyForTripRequest request){
 
-        List<Error> validationErrors = validator.validate(request);
+        List<ApplicationError> validationApplicationErrors = validator.validate(request);
 
-        if (!validationErrors.isEmpty()) {
-            return new ApplyForTripResponse(validationErrors);
+        if (!validationApplicationErrors.isEmpty()) {
+            throw new ApplicationException(validationApplicationErrors);
         }
+
+        //TODO add -1 to trip availiable seats
 
         TripPassanger tripPassanger = new TripPassanger();
         tripPassanger.setUser(request.getPassanger());

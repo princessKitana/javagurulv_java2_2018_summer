@@ -44,7 +44,7 @@ id    bigserial PRIMARY KEY,
 driverId bigint NOT NULL references users(id),
 model varchar(200) NOT NULL,
 color varchar(200) NOT NULL,
-year int,
+year varchar(200),
 regNumber varchar(200)
 );
 

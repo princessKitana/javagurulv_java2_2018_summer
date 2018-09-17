@@ -26,7 +26,7 @@ class GetVehicleServiceImpl implements GetVehicleService {
 
             VehicleDTO vehicleDTO = new VehicleDTO();
             vehicleDTO.setId(vehicle.getId());
-            vehicleDTO.setUserId(vehicle.getId());
+            vehicleDTO.setDriverId(vehicle.getUser().getId());
             vehicleDTO.setModel(vehicle.getModel());
             vehicleDTO.setColor(vehicle.getColor());
             vehicleDTO.setYear(vehicle.getYear());

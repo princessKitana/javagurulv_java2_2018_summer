@@ -1,6 +1,6 @@
 package lv.javaguru.java2.addVehicleTests;
 
-import lv.javaguru.java2.Error;
+import lv.javaguru.java2.buisnesslogic.ApplicationError;
 import lv.javaguru.java2.buisnesslogic.vehicle.addvehicle.AddVehicleRequest;
 import lv.javaguru.java2.buisnesslogic.vehicle.addvehicle.VehicleValidator;
 import lv.javaguru.java2.buisnesslogic.vehicle.addvehicle.VehicleValidatorImpl;
@@ -39,16 +39,14 @@ public class AddVehicleValidatorImplTest {
 
         Vehicle car = new Vehicle();
         car.setColor("");
-        car.setYear(2015);
-        car.setRegNumber("LR-5789");
 
         car.setUser(user);
 
         Mockito.when(userRepository.checkUserExist(user.getId()))
-                .thenReturn(true);
+                .thenReturn(java.util.Optional.ofNullable(user));
 
         AddVehicleRequest req = new AddVehicleRequest(car);
-        List<Error> errors = validator.validate(req);
+        List<ApplicationError> errors = validator.validate(req);
 
         assertEquals(2, errors.size());
         assertEquals("color", errors.get(0).getField() );
@@ -71,10 +69,10 @@ public class AddVehicleValidatorImplTest {
         car.setModel("Honda Accord");
 
         Mockito.when(userRepository.checkUserExist(user.getId()))
-                .thenReturn(false);
+                .thenReturn(java.util.Optional.empty());
 
         AddVehicleRequest req = new AddVehicleRequest(car);
-        List<Error> errors = validator.validate(req);
+        List<ApplicationError> errors = validator.validate(req);
 
         assertEquals(1, errors.size());
         assertEquals("driverId", errors.get(0).getField() );

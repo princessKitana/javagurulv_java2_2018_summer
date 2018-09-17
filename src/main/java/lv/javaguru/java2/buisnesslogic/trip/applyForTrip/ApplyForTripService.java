@@ -1,4 +1,4 @@
-package lv.javaguru.java2.buisnesslogic.applyForTrip;
+package lv.javaguru.java2.buisnesslogic.trip.applyForTrip;
 
 public interface ApplyForTripService {
 

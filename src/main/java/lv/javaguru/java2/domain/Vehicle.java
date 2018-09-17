@@ -21,10 +21,10 @@ public class Vehicle {
     @Column(name="color", nullable = false, length = 200)
     private String color;
 
-    @Column(name="year")
-    private int year;
+    @Column(name="year", length = 200)
+    private String year;
 
-    @Column(name="regNumber", nullable = false, length = 200)
+    @Column(name="regNumber", length = 200)
     private String regNumber;
 
     public Long getId() {
@@ -59,11 +59,11 @@ public class Vehicle {
         this.color = color;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 

@@ -3,19 +3,19 @@ package lv.javaguru.java2.web.dtos;
 public class VehicleDTO {
 
     private Long id;
-    private Long userId;
+    private Long driverId;
     private String model;
     private String color;
-    private Integer year;
+    private String year;
     private String regNumber;
 
     public VehicleDTO() {
 
     }
 
-    public VehicleDTO(Long id, Long userId, String model, String color, int year, String regNumber) {
+    public VehicleDTO(Long id, Long driverId, String model, String color, String year, String regNumber) {
         this.id = id;
-        this.userId = userId;
+        this.driverId = driverId;
         this.model = model;
         this.color = color;
         this.year = year;
@@ -30,12 +30,12 @@ public class VehicleDTO {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getDriverId() {
+        return driverId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setDriverId(Long driverId) {
+        this.driverId = driverId;
     }
 
     public String getModel() {
@@ -54,11 +54,11 @@ public class VehicleDTO {
         this.color = color;
     }
 
-    public Integer getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(Integer year) {
+    public void setYear(String year) {
         this.year = year;
     }
 

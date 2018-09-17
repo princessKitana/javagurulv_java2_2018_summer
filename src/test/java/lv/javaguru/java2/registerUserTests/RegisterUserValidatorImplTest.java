@@ -4,7 +4,6 @@ import lv.javaguru.java2.buisnesslogic.ApplicationError;
 import lv.javaguru.java2.buisnesslogic.user.register.RegisterUserRequest;
 import lv.javaguru.java2.database.UserRepository;
 import lv.javaguru.java2.domain.User;
-import lv.javaguru.java2.Error;
 import lv.javaguru.java2.buisnesslogic.user.register.RegisterUserValidator;
 import lv.javaguru.java2.buisnesslogic.user.register.RegisterUserValidatorImpl;
 import org.junit.Test;

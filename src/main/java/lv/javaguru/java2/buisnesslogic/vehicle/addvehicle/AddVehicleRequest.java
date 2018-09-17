@@ -7,7 +7,7 @@ public class AddVehicleRequest {
     private Long driverId;
     private String model;
     private String color;
-    private int year;
+    private String year;
     private String regNumber;
 
     public AddVehicleRequest(Vehicle car) {
@@ -42,11 +42,11 @@ public class AddVehicleRequest {
         this.color = color;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 

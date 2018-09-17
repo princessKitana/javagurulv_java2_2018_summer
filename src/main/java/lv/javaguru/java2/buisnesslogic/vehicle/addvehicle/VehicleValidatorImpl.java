@@ -1,8 +1,8 @@
 package lv.javaguru.java2.buisnesslogic.vehicle.addvehicle;
 
-import lv.javaguru.java2.Error;
 import lv.javaguru.java2.buisnesslogic.ApplicationError;
 import lv.javaguru.java2.database.UserRepository;
+import lv.javaguru.java2.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -49,7 +49,8 @@ public class VehicleValidatorImpl implements VehicleValidator {
         if (driverId == null) {
             return Optional.of(new ApplicationError("driverId", "Cannot be empty"));
         } else {
-            if (userRepository.checkUserExist(driverId)) {
+            Optional<User> user = userRepository.checkUserExist(driverId);
+            if (user.isPresent()) {
                 return Optional.empty();
             } else
                 return Optional.of(new ApplicationError("driverId", "Does not exist"));

@@ -1,7 +1,8 @@
-package lv.javaguru.java2.buisnesslogic.addtrip;
+package lv.javaguru.java2.buisnesslogic.trip.addtrip;
 
+import lv.javaguru.java2.buisnesslogic.ApplicationError;
+import lv.javaguru.java2.buisnesslogic.ApplicationException;
 import lv.javaguru.java2.buisnesslogic.TripStatus;
-import lv.javaguru.java2.Error;
 import lv.javaguru.java2.database.TripRepository;
 import lv.javaguru.java2.domain.Trip;
 import lv.javaguru.java2.domain.User;
@@ -25,10 +26,9 @@ public class AddTripServiceImpl implements AddTripService{
     @Override
     public AddTripResponse addTrip(AddTripRequest request){
 
-        List<Error> validationErrors = validator.validate(request);
-
+        List<ApplicationError> validationErrors = validator.validate(request);
         if (!validationErrors.isEmpty()) {
-            return new AddTripResponse(validationErrors);
+            throw new ApplicationException(validationErrors);
         }
 
         Trip trip = new Trip();

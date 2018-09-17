@@ -1,9 +1,9 @@
 package lv.javaguru.java2.views;
 
 import lv.javaguru.java2.buisnesslogic.TripStatus;
-import lv.javaguru.java2.buisnesslogic.addtrip.AddTripRequest;
+import lv.javaguru.java2.buisnesslogic.trip.addtrip.AddTripRequest;
 import lv.javaguru.java2.domain.Trip;
-import lv.javaguru.java2.buisnesslogic.addtrip.AddTripService;
+import lv.javaguru.java2.buisnesslogic.trip.addtrip.AddTripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

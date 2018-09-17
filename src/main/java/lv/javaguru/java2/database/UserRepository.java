@@ -16,5 +16,5 @@ public interface UserRepository {
 
     Optional<User> getUserById(Long id);
 
-    boolean checkUserExist(Long id);
+    Optional<User> checkUserExist(Long id);
 }

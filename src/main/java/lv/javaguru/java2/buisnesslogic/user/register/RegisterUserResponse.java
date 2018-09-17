@@ -1,6 +1,6 @@
 package lv.javaguru.java2.buisnesslogic.user.register;
 
-import lv.javaguru.java2.Error;
+import lv.javaguru.java2.buisnesslogic.ApplicationError;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ public class RegisterUserResponse {
 
     private boolean success;
     private Long userId;
-    private List<Error> errors;
+    private List<ApplicationError> applicationErrors;
 
     public Long getUserId() {
         return userId;
@@ -18,12 +18,12 @@ public class RegisterUserResponse {
         this.userId = userId;
     }
 
-    public List<Error> getErrors() {
-        return errors;
+    public List<ApplicationError> getApplicationErrors() {
+        return applicationErrors;
     }
 
-    public void setErrors(List<Error> errors) {
-        this.errors = errors;
+    public void setApplicationErrors(List<ApplicationError> applicationErrors) {
+        this.applicationErrors = applicationErrors;
     }
 
 
@@ -37,8 +37,8 @@ public class RegisterUserResponse {
         this.userId = userId;
     }
 
-    public RegisterUserResponse(List<Error> errors) {
+    public RegisterUserResponse(List<ApplicationError> applicationErrors) {
         this.success = false;
-        this.errors = errors;
+        this.applicationErrors = applicationErrors;
     }
 }

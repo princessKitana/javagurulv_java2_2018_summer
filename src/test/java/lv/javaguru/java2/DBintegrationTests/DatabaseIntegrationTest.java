@@ -68,7 +68,7 @@ public class DatabaseIntegrationTest {
         car.setUser(user);
         car.setColor("Black");
         car.setModel("Audi A4");
-        car.setYear(2015);
+        car.setYear("2015");
         car.setRegNumber("LR-5789");
 
         database.addVehicle(car);

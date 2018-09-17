@@ -1,6 +1,5 @@
 package lv.javaguru.java2.buisnesslogic.vehicle.addvehicle;
 
-import lv.javaguru.java2.Error;
 import lv.javaguru.java2.buisnesslogic.ApplicationError;
 
 import java.util.List;
@@ -17,6 +16,7 @@ public class AddVehicleResponse {
     public Long getVehicleId() {
         return vehicleId;
     }
+
     public void setVehicleId(Long vehicleId) {
         this.vehicleId = vehicleId;
     }

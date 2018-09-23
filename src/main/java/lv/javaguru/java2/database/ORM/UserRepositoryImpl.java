@@ -16,6 +16,14 @@ public class UserRepositoryImpl extends ORMRepository implements UserRepository 
     }
 
     @Override
+    public void setUserAsDriver(User user){
+
+        User objectToUpdate = (User) session().get(User.class, user.getId());
+        objectToUpdate.setDriver(true);
+        session().update(objectToUpdate);
+    }
+
+    @Override
     public Optional<User> getUserByLogin(String login){
 
         User user = (User) session().createCriteria(User.class)

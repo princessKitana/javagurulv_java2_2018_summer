@@ -3,9 +3,8 @@ package lv.javaguru.java2.addTripTests;
 import lv.javaguru.java2.buisnesslogic.ApplicationError;
 import lv.javaguru.java2.buisnesslogic.TripStatus;
 import lv.javaguru.java2.buisnesslogic.trip.addtrip.AddTripRequest;
-import lv.javaguru.java2.database.ORM.UserRepositoryImpl;
-import lv.javaguru.java2.database.TripRepository;
 import lv.javaguru.java2.database.UserRepository;
+import lv.javaguru.java2.database.VehicleRepository;
 import lv.javaguru.java2.domain.Trip;
 import lv.javaguru.java2.buisnesslogic.trip.addtrip.TripValidator;
 import lv.javaguru.java2.buisnesslogic.trip.addtrip.TripValidatorImpl;
@@ -28,7 +27,10 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class TripValidatorImplTest {
     @Mock
-    private UserRepository database;
+    private UserRepository userRepository;
+
+    @Mock
+    private VehicleRepository vehicleRepository;
 
     @InjectMocks
     private TripValidator validator = new TripValidatorImpl();
@@ -52,8 +54,14 @@ public class TripValidatorImplTest {
         trip.setStatus(TripStatus.PENDING);
         trip.setPassangerCount( 2 );
 
-        Mockito.when(database.checkUserExist( user.getId()))
+        Mockito.when( userRepository.checkUserExist( user.getId()))
                 .thenReturn( Optional.ofNullable( user ) );
+
+        Mockito.when( vehicleRepository.getVehicle( car.getId()))
+                .thenReturn(Optional.ofNullable( car ));
+
+        Mockito.when( vehicleRepository.checkVehicleBelongsToDriver( car.getId(), user.getId()))
+                .thenReturn(Optional.ofNullable( car ));
 
         AddTripRequest request = new AddTripRequest(trip);
         List<ApplicationError> applicationErrors = validator.validate(request);
@@ -87,8 +95,12 @@ public class TripValidatorImplTest {
         trip.setOrigin("");
         trip.setDestination("");
 
-        Mockito.when(database.checkUserExist( user.getId()))
+        Mockito.when( userRepository.checkUserExist( user.getId()))
                 .thenReturn( Optional.ofNullable( user ) );
+        Mockito.when( vehicleRepository.getVehicle( car.getId()))
+                .thenReturn(Optional.ofNullable( car ));
+        Mockito.when( vehicleRepository.checkVehicleBelongsToDriver( car.getId(), user.getId()))
+                .thenReturn(Optional.ofNullable( car ));
 
         AddTripRequest request = new AddTripRequest(trip);
         List<ApplicationError> applicationErrors = validator.validate(request);
@@ -121,8 +133,12 @@ public class TripValidatorImplTest {
         trip.setOrigin( "Riga" );
         trip.setDestination( "Valmiera" );
 
-        Mockito.when(database.checkUserExist( user.getId()))
+        Mockito.when( userRepository.checkUserExist( user.getId()))
                 .thenReturn( Optional.ofNullable( user ) );
+        Mockito.when( vehicleRepository.getVehicle( car.getId()))
+                .thenReturn(Optional.ofNullable( car ));
+        Mockito.when( vehicleRepository.checkVehicleBelongsToDriver( car.getId(), user.getId()))
+                .thenReturn(Optional.ofNullable( car ));
 
         AddTripRequest request = new AddTripRequest(trip);
         List<ApplicationError> applicationErrors = validator.validate(request);
@@ -157,8 +173,12 @@ public class TripValidatorImplTest {
         trip.setOrigin( "Riga" );
         trip.setDestination( "Valmiera" );
 
-        Mockito.when(database.checkUserExist( user.getId()))
+        Mockito.when( userRepository.checkUserExist( user.getId()))
                 .thenReturn( Optional.ofNullable( user ) );
+        Mockito.when( vehicleRepository.getVehicle( car.getId()))
+                .thenReturn(Optional.ofNullable( car ));
+        Mockito.when( vehicleRepository.checkVehicleBelongsToDriver( car.getId(), user.getId()))
+                .thenReturn(Optional.ofNullable( car ));
 
         AddTripRequest request = new AddTripRequest(trip);
         List<ApplicationError> applicationErrors = validator.validate(request);
@@ -190,8 +210,12 @@ public class TripValidatorImplTest {
         trip.setOrigin( "Riga" );
         trip.setDestination( "Valmiera" );
 
-        Mockito.when(database.checkUserExist( user.getId()))
+        Mockito.when( userRepository.checkUserExist( user.getId()))
                 .thenReturn( Optional.ofNullable( user ) );
+        Mockito.when( vehicleRepository.getVehicle( car.getId()))
+                .thenReturn(Optional.ofNullable( car ));
+        Mockito.when( vehicleRepository.checkVehicleBelongsToDriver( car.getId(), user.getId()))
+                .thenReturn(Optional.ofNullable( car ));
 
         AddTripRequest request = new AddTripRequest(trip);
         List<ApplicationError> applicationErrors = validator.validate(request);
@@ -223,8 +247,12 @@ public class TripValidatorImplTest {
         trip.setOrigin( "Riga" );
         trip.setDestination( "Valmiera" );
 
-        Mockito.when(database.checkUserExist( user.getId()))
+        Mockito.when( userRepository.checkUserExist( user.getId()))
                 .thenReturn( Optional.ofNullable( user ) );
+        Mockito.when( vehicleRepository.getVehicle( car.getId()))
+                .thenReturn(Optional.ofNullable( car ));
+        Mockito.when( vehicleRepository.checkVehicleBelongsToDriver( car.getId(), user.getId()))
+                .thenReturn(Optional.ofNullable( car ));
 
         AddTripRequest request = new AddTripRequest(trip);
         List<ApplicationError> applicationErrors = validator.validate(request);
@@ -256,8 +284,12 @@ public class TripValidatorImplTest {
         trip.setOrigin( "Riga" );
         trip.setDestination( "Valmiera" );
 
-        Mockito.when(database.checkUserExist( user.getId()))
+        Mockito.when( userRepository.checkUserExist( user.getId()))
                 .thenReturn( Optional.ofNullable( user ) );
+        Mockito.when( vehicleRepository.getVehicle( car.getId()))
+                .thenReturn(Optional.ofNullable( car ));
+        Mockito.when( vehicleRepository.checkVehicleBelongsToDriver( car.getId(), user.getId()))
+                .thenReturn(Optional.ofNullable( car ));
 
         AddTripRequest request = new AddTripRequest(trip);
         List<ApplicationError> applicationErrors = validator.validate(request);
@@ -269,12 +301,12 @@ public class TripValidatorImplTest {
     @Test
     public void shouldReturnErrorWhenDriverNotExist() {
 
-Trip trip = new Trip();
-    Vehicle car = new Vehicle();
+        Trip trip = new Trip();
+        Vehicle car = new Vehicle();
         car.setId(  (long) 1);
 
-    User user = new User();
-        user.setId((long) 66);
+        User user = new User();
+        user.setId((long) 1);
 
         trip.setCar(car);
         trip.setUser(user);
@@ -283,54 +315,181 @@ Trip trip = new Trip();
         trip.setComment("will pick up at Alfa");
         trip.setPrice(Double.parseDouble("2.56"));
         trip.setStatus(TripStatus.PENDING);
-        trip.setPassangerCount( 2 );
+        trip.setPassangerCount( 2);
         trip.setOrigin( "Riga" );
         trip.setDestination( "Valmiera" );
 
-        Mockito.when(database.checkUserExist( user.getId()))
-                .thenReturn(java.util.Optional.empty());
+        Mockito.when( userRepository.checkUserExist( user.getId()))
+                .thenReturn( Optional.empty() );
+        Mockito.when( vehicleRepository.getVehicle( car.getId()))
+                .thenReturn(Optional.ofNullable( car ));
+        Mockito.when( vehicleRepository.checkVehicleBelongsToDriver( car.getId(), user.getId()))
+                .thenReturn(Optional.ofNullable( car ));
+
+        AddTripRequest request = new AddTripRequest(trip);
+        List<ApplicationError> applicationErrors = validator.validate(request);
+
+        assertEquals(1, applicationErrors.size());
+        assertEquals("driverId", applicationErrors.get(0).getField() );
+        assertEquals( "Driver not found", applicationErrors.get(0).getDescription());
+
+    }
+
+
+    @Test
+    public void shouldReturnErrorWhenPassangerCountZero() {
+
+        Trip trip = new Trip();
+        Vehicle car = new Vehicle();
+        car.setId(  (long) 1);
+
+        User user = new User();
+        user.setId((long) 1);
+
+        trip.setCar(car);
+        trip.setUser(user);
+        trip.setDate(Date.valueOf("2020-09-06"));
+        trip.setTime(Time.valueOf("14:00:00"));
+        trip.setComment("will pick up at Alfa");
+        trip.setPrice(Double.parseDouble("2.56"));
+        trip.setStatus(TripStatus.PENDING);
+        trip.setPassangerCount(0);
+        trip.setOrigin( "Riga" );
+        trip.setDestination( "Valmiera" );
+
+        Mockito.when( userRepository.checkUserExist( user.getId()))
+                .thenReturn(Optional.ofNullable( user ));
+        Mockito.when( vehicleRepository.getVehicle( car.getId()))
+                .thenReturn(Optional.ofNullable( car ));
+        Mockito.when( vehicleRepository.checkVehicleBelongsToDriver( car.getId(), user.getId()))
+                .thenReturn(Optional.ofNullable( car ));
 
         AddTripRequest request = new AddTripRequest(trip);
         List<ApplicationError> errors = validator.validate(request);
 
         assertEquals(1, errors.size());
-        assertEquals("driverId", errors.get(0).getField() );
-        assertEquals( "Driver not found", errors.get(0).getDescription());
+        assertEquals("passangerCount", errors.get(0).getField() );
+        assertEquals( "Must be more than 0", errors.get(0).getDescription());
+
+    }
+
+    @Test
+    public void shouldReturnErrorWhenVehicleNotFound() {
+
+        Trip trip = new Trip();
+        Vehicle car = new Vehicle();
+        car.setId(  (long) 1);
+
+        User user = new User();
+        user.setId((long) 1);
+
+        trip.setCar(car);
+        trip.setUser(user);
+        trip.setDate(Date.valueOf("2020-09-06"));
+        trip.setTime(Time.valueOf("14:00:00"));
+        trip.setComment("will pick up at Alfa");
+        trip.setPrice(Double.parseDouble("2.56"));
+        trip.setStatus(TripStatus.PENDING);
+        trip.setPassangerCount(2);
+        trip.setOrigin( "Riga" );
+        trip.setDestination( "Valmiera" );
+
+        Mockito.when( userRepository.checkUserExist( user.getId()))
+                .thenReturn(Optional.ofNullable( user ));
+
+        Mockito.when( vehicleRepository.getVehicle( car.getId()))
+                .thenReturn(Optional.empty());
+
+        AddTripRequest request = new AddTripRequest(trip);
+        List<ApplicationError> errors = validator.validate(request);
+
+        assertEquals(1, errors.size());
+        assertEquals("vehicleId", errors.get(0).getField() );
+        assertEquals( "Not found", errors.get(0).getDescription());
+
+    }
+
+    @Test
+    public void shouldReturnErrorWhenVehicleNotBelongsToDriver() {
+
+        Trip trip = new Trip();
+        Vehicle car = new Vehicle();
+        car.setId(  (long) 1);
+
+        User user = new User();
+        user.setId((long) 1);
+
+        trip.setCar(car);
+        trip.setUser(user);
+        trip.setDate(Date.valueOf("2020-09-06"));
+        trip.setTime(Time.valueOf("14:00:00"));
+        trip.setComment("will pick up at Alfa");
+        trip.setPrice(Double.parseDouble("2.56"));
+        trip.setStatus(TripStatus.PENDING);
+        trip.setPassangerCount(2);
+        trip.setOrigin( "Riga" );
+        trip.setDestination( "Valmiera" );
+
+        Mockito.when( userRepository.checkUserExist( user.getId()))
+                .thenReturn(Optional.ofNullable( user ));
+
+        Mockito.when( vehicleRepository.getVehicle( car.getId()))
+                .thenReturn(Optional.ofNullable( car ));
+
+        Mockito.when( vehicleRepository.checkVehicleBelongsToDriver( car.getId(), user.getId()))
+                .thenReturn(Optional.empty());
+
+        AddTripRequest request = new AddTripRequest(trip);
+        List<ApplicationError> errors = validator.validate(request);
+
+        assertEquals(1, errors.size());
+        assertEquals("vehicleId", errors.get(0).getField() );
+        assertEquals( "Vehicle do not belongs to driver", errors.get(0).getDescription());
+
+    }
+
+    @Test
+    public void shouldReturnErrorWhenTimeInvalid(){
+
+        AddTripRequest trip = createTrip();
+        trip.setTime( "94:0698" );
+
+
+        Vehicle car = new Vehicle();
+        car.setId(  (long) 1);
+
+        User user = new User();
+        user.setId((long) 1);
+
+        Mockito.when( userRepository.checkUserExist( trip.getDriverId()))
+                .thenReturn(Optional.ofNullable( user ));
+        Mockito.when( vehicleRepository.getVehicle( trip.getDriverId()))
+                .thenReturn(Optional.ofNullable( car ));
+        Mockito.when( vehicleRepository.checkVehicleBelongsToDriver( trip.getDriverId(), trip.getDriverId()))
+                .thenReturn(Optional.ofNullable( car ));
+
+        List<ApplicationError> applicationErrors = validator.validate(trip);
+
+        assertEquals(1, applicationErrors.size());
+        assertEquals("time", applicationErrors.get(0).getField() );
+        assertEquals( "Not not valid", applicationErrors.get(0).getDescription());
 
     }
 
 
-//    @Test
-//    public void shouldReturnErrorWhenTimeInvalid(){
-//
-//        Trip trip = new Trip();
-//        Vehicle car = new Vehicle();
-//        car.setId(  (long) 1);
-//
-//        User user = new User();
-//        user.setId((long) 1);
-//
-//        trip.setCar(car);
-//        trip.setUser(user);
-//        trip.setDate(Date.valueOf("2020-09-06"));
-//        trip.setTime(Time.valueOf("19:00:60")); //TODO cannot validate time
-//        trip.setComment("will pick up at Alfa");
-//        trip.setPrice(Double.parseDouble("0.01"));
-//        trip.setStatus(TripStatus.PENDING);
-//        trip.setPassangerCount( 2 );
-//        trip.setOrigin( "Riga" );
-//        trip.setDestination( "Valmiera" );
-//
-//        Mockito.when(database.checkUserExist( user.getId()))
-//                .thenReturn( Optional.ofNullable( user ) );
-//
-//
-//        AddTripRequest request = new AddTripRequest(trip);
-//        List<ApplicationError> applicationErrors = validator.validate(request);
-//
-//        assertEquals(1, applicationErrors.size());
-//        assertEquals("time", applicationErrors.get(0).getField() );
-//        assertEquals( "Not not valid 1", applicationErrors.get(0).getDescription());
-//
-//    }
+    public AddTripRequest createTrip() {
+        AddTripRequest trip = new AddTripRequest();
+
+        trip.setDriverId((long) 3);
+        trip.setVehicleId((long) 3);
+        trip.setOrigin("Riga");
+        trip.setDestination("Liepaja");
+        trip.setDate(Date.valueOf("2022-07-06"));
+        trip.setTime("14:00:00");
+        trip.setComment("will pick up at Alfa");
+        trip.setPrice(Double.parseDouble("2.56"));
+        trip.setPassangerCount(2);
+
+        return trip;
+    }
 }

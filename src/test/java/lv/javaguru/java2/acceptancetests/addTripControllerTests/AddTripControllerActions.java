@@ -25,7 +25,7 @@ public class AddTripControllerActions {
         trip.setOrigin("Riga");
         trip.setDestination("Liepaja");
         trip.setDate(Date.valueOf("2022-07-06"));
-        trip.setTime(Time.valueOf("14:00:00"));
+        trip.setTime("14:00:00");
         trip.setComment("will pick up at Alfa");
         trip.setPrice(Double.parseDouble("2.56"));
         trip.setPassangerCount(2);

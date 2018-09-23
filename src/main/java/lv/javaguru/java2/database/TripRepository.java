@@ -17,4 +17,6 @@ public interface TripRepository {
     boolean checkTripExist(Long id, TripStatus status);
 
     Optional<Trip> getTripById(Long id);
+
+    void pssangerCountLessOne(Long id);
 }

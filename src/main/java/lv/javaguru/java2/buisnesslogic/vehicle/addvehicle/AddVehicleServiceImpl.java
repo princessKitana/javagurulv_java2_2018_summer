@@ -3,6 +3,7 @@ package lv.javaguru.java2.buisnesslogic.vehicle.addvehicle;
 
 import lv.javaguru.java2.buisnesslogic.ApplicationError;
 import lv.javaguru.java2.buisnesslogic.ApplicationException;
+import lv.javaguru.java2.database.UserRepository;
 import lv.javaguru.java2.database.VehicleRepository;
 import lv.javaguru.java2.domain.User;
 import lv.javaguru.java2.domain.Vehicle;
@@ -17,6 +18,9 @@ public class AddVehicleServiceImpl implements AddVehicleService{
 
     @Autowired
     private VehicleRepository vehicleRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private VehicleValidator validator;
@@ -41,7 +45,8 @@ public class AddVehicleServiceImpl implements AddVehicleService{
         car.setUser(driver);
 
         vehicleRepository.addVehicle(car);
-        //TODO set user isDriver=true
+
+        userRepository.setUserAsDriver(driver);
 
         return new AddVehicleResponse(car.getId());
     }

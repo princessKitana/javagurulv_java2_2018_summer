@@ -22,7 +22,7 @@
 ////            preparedStatement.setInt(1, product.getId());
 ////            preparedStatement.executeUpdate();
 ////
-////            // TODO how to get deleted record count from result set?
+////
 ////            return true;
 ////        } catch (Throwable e) {
 ////            System.out.println("Exception while execute ProductDAOImpl.delete()");

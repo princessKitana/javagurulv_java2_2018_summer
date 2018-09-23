@@ -17,4 +17,6 @@ public interface UserRepository {
     Optional<User> getUserById(Long id);
 
     Optional<User> checkUserExist(Long id);
+
+    void setUserAsDriver(User user);
 }

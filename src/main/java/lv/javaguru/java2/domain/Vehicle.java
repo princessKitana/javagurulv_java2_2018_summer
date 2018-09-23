@@ -74,4 +74,6 @@ public class Vehicle {
     public void setRegNumber(String regNumber) {
         this.regNumber = regNumber;
     }
+
+
 }

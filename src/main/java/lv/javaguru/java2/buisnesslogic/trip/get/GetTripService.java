@@ -9,7 +9,7 @@ import java.util.List;
 @Component
 public interface GetTripService {
 
-     List<Trip> getAllTrips();
+     GetAllTripsResponse getAllTrips();
 
      GetTripResponse get(GetTripRequest request);
 }

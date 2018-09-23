@@ -3,6 +3,7 @@ package lv.javaguru.java2.buisnesslogic.trip.applyForTrip;
 import lv.javaguru.java2.buisnesslogic.ApplicationError;
 import lv.javaguru.java2.buisnesslogic.ApplicationException;
 import lv.javaguru.java2.database.TripPassangerRepository;
+import lv.javaguru.java2.database.TripRepository;
 import lv.javaguru.java2.domain.TripPassanger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,9 @@ public class ApplyForTripServiceImpl implements ApplyForTripService{
     private TripPassangerRepository tripPassangerRepository;
 
     @Autowired
+    private TripRepository tripRepository;
+
+    @Autowired
     private ApplyForTripValidator validator;
 
     @Transactional
@@ -29,7 +33,7 @@ public class ApplyForTripServiceImpl implements ApplyForTripService{
             throw new ApplicationException(validationApplicationErrors);
         }
 
-        //TODO add -1 to trip availiable seats
+        tripRepository.pssangerCountLessOne(request.getTrip().getId());
 
         TripPassanger tripPassanger = new TripPassanger();
         tripPassanger.setUser(request.getPassanger());

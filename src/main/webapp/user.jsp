@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<h1>Hello from JSP file!</h1>
+<h1>User</h1>
 
 <h2><%= request.getAttribute("model") %></h2>
 

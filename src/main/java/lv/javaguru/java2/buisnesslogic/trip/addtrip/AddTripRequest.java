@@ -11,8 +11,8 @@ public class AddTripRequest {
     private String origin;
     private String destination;
     private Date date;
-    private Time time;
-    private int passangerCount;
+    private String time;
+    private Integer passangerCount;
     private Double price;
     private String comment;
     private Long driverId;
@@ -22,12 +22,15 @@ public class AddTripRequest {
         this.origin = trip.getOrigin();
         this.destination = trip.getDestination();
         this.date = trip.getDate();
-        this.time = trip.getTime();
+        this.time = String.valueOf( trip.getTime() );
         this.passangerCount = trip.getPassangerCount();
         this.price = trip.getPrice();
         this.comment = trip.getComment();
         this.driverId = trip.getUser().getId();
         this.vehicleId = trip.getCar().getId();
+    }
+
+    public AddTripRequest() {
     }
 
     public String getOrigin() {
@@ -54,11 +57,11 @@ public class AddTripRequest {
         this.date = date;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

@@ -6,7 +6,7 @@ public class TripPassangerDTO {
 
     private Long id;
 
-    private Long trip; //TODO Long vs String
+    private Long trip;
     private Long passanger;
 
     public TripPassangerDTO() {

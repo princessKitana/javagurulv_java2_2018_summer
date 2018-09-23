@@ -35,7 +35,7 @@ public class VehicleController {
         car.setUser(user);
         car.setModel(vehicleDTO.getModel());
         car.setColor(vehicleDTO.getColor());
-        car.setYear(vehicleDTO.getYear());//TODO fix nullpointer exception
+        car.setYear(vehicleDTO.getYear());
         car.setRegNumber(vehicleDTO.getRegNumber());
 
         AddVehicleRequest request = new AddVehicleRequest(car);

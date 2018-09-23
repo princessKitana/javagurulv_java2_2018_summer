@@ -28,7 +28,7 @@ public class Trip {
     private Time time;
 
     @Column(name="passangerCount", nullable = false)
-    private int passangerCount;
+    private Integer passangerCount;
 
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)

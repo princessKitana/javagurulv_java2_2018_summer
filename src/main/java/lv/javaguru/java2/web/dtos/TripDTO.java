@@ -1,9 +1,13 @@
 package lv.javaguru.java2.web.dtos;
 
+import lv.javaguru.java2.buisnesslogic.ApplicationError;
 import lv.javaguru.java2.domain.Trip;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TripDTO {
 
@@ -11,10 +15,10 @@ public class TripDTO {
     private String origin;
     private String destination;
     private Date date;
-    private Time time;
-    private int passangerCount;
+    private String time;
+    private Integer passangerCount;
     private Double price;
-    //public TripStatus status;
+    private String status;
     private Long driverId;
     private Long vehicleId;
     private String comment;
@@ -27,7 +31,8 @@ public class TripDTO {
         this.origin = trip.getOrigin();
         this.destination = trip.getDestination();
         this.date = trip.getDate();
-        this.time = trip.getTime();
+        this.time = String.valueOf( trip.getTime() );
+        this.status = String.valueOf( trip.getStatus() );
         this.passangerCount = trip.getPassangerCount();
         this.price = trip.getPrice();
         this.driverId = trip.getUser().getId();
@@ -83,11 +88,11 @@ public class TripDTO {
         this.date = date;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -114,4 +119,13 @@ public class TripDTO {
     public void setVehicleId(Long vehicleId) {
         this.vehicleId = vehicleId;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }

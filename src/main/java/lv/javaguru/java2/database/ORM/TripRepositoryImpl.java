@@ -35,11 +35,13 @@ public class TripRepositoryImpl extends ORMRepository implements TripRepository{
                 .add(Restrictions.eq("id", id))
                 .add(Restrictions.eq("status", status))
                 .uniqueResult();
+
         if (trip != null) {
             return true;
         } else return false;
     }
 
+    @Override
     public Optional<Trip> getTripById(Long id){
         Trip trip = (Trip) session().createCriteria(Trip.class)
                 .add(Restrictions.eq("id", id))
@@ -47,4 +49,22 @@ public class TripRepositoryImpl extends ORMRepository implements TripRepository{
 
         return Optional.ofNullable(trip);
     }
+
+    @Override
+    public void pssangerCountLessOne(Long id){
+        Trip trip = (Trip) session().createCriteria(Trip.class)
+                .add(Restrictions.eq("id", id))
+                .uniqueResult();
+        int count = trip.getPassangerCount();
+        count = count - 1;
+
+        Trip updatedTrip = (Trip) session().get(Trip.class, trip.getId());
+        updatedTrip.setPassangerCount(count);
+
+        if (count<=0) updatedTrip.setStatus( TripStatus.FULL );
+
+        session().update(updatedTrip);
+    }
+
+
 }

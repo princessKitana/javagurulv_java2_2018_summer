@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,8 +26,17 @@ public class GetTripServiceImpl implements GetTripService {
 
     @Override
     @Transactional
-        public List<Trip> getAllTrips(){
-            return database.getAllTrips();
+        public GetAllTripsResponse getAllTrips(){
+
+        List<Trip> trips1 = database.getAllTrips();
+        List<TripDTO> trips2 = new ArrayList<>(  );
+
+        trips1.forEach((temp) -> {
+            TripDTO tripDTO = new TripDTO(temp);
+            trips2.add(tripDTO);
+        });
+
+            return new GetAllTripsResponse(trips2);
         }
 
         @Override

@@ -1,4 +1,4 @@
-package lv.javaguru.java2.web.servlets.mvc;
+package mvc_temp.mvc;
 
 import lv.javaguru.java2.config.SpringAppConfig;
 import org.springframework.beans.BeansException;
@@ -33,9 +33,9 @@ public class MVCDispatcherFilter implements Filter {
         }
 
         controllerMapping = new HashMap();
-        controllerMapping.put("/hello", getBean(HelloWorldController.class));
-        controllerMapping.put("/hello1", getBean(HelloWorldController.class));
-        controllerMapping.put("/hello2", getBean(HelloWorldController.class));
+        //controllerMapping.put("/user", getBean(UserController.class));
+        //controllerMapping.put("/hello1", getBean(HelloWorldController.class));
+
     }
 
     private MVCController getBean(Class clazz){
@@ -62,9 +62,9 @@ public class MVCDispatcherFilter implements Filter {
             if ("GET".equalsIgnoreCase(method)) {
                 model = controller.processGet(req);
             }
-            if ("POST".equalsIgnoreCase(method)) {
-                model = controller.processPost(req);
-            }
+//            if ("POST".equalsIgnoreCase(method)) {
+//                model = controller.processPost(req);
+//            }
 
             req.setAttribute("model", model.getData());
 

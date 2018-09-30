@@ -28,7 +28,7 @@ public class Trip {
     private Time time;
 
     @Column(name="passangerCount", nullable = false)
-    private Integer passangerCount;
+    private int passangerCount;
 
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -122,13 +122,6 @@ public class Trip {
     public void setCar(Vehicle car) {
         this.car = car;
     }
-//    public Long getDriverId() {
-//        return driverId;
-//    }
-//
-//    public void setDriverId(Long driverId) {
-//        this.driverId = this.user.getId();
-//    }
 
     public TripStatus getStatus() {
         return status;
@@ -146,13 +139,6 @@ public class Trip {
         this.user = user;
     }
 
-    //public List<Long> getPassangers() {
-        //return passangers;
-    //}
-
-    //public void setPassangers(List<Long> passangers) {
-        //this.passangers = passangers;
-    //}
 
 
 }

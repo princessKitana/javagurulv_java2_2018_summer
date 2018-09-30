@@ -17,7 +17,7 @@ public class VehicleControllerActions {
 
     public VehicleDTO createVehicle() {
         VehicleDTO car = new VehicleDTO();
-        car.setDriverId((long) 1);
+        car.setDriverId((long) 31); //Must exist in DB
         car.setRegNumber("MK-8597");
         car.setYear("2018");
         car.setModel("Audi A4");

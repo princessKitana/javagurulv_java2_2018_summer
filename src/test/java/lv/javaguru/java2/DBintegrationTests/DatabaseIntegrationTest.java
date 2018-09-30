@@ -2,76 +2,83 @@ package lv.javaguru.java2.DBintegrationTests;
 
 import lv.javaguru.java2.buisnesslogic.TripStatus;
 import lv.javaguru.java2.config.SpringAppConfig;
-import lv.javaguru.java2.database.Database;
+import lv.javaguru.java2.database.TripPassangerRepository;
+import lv.javaguru.java2.database.TripRepository;
+import lv.javaguru.java2.database.UserRepository;
+import lv.javaguru.java2.database.VehicleRepository;
 import lv.javaguru.java2.domain.Trip;
 import lv.javaguru.java2.domain.TripPassanger;
 import lv.javaguru.java2.domain.User;
 import lv.javaguru.java2.domain.Vehicle;
+import lv.javaguru.java2.web.config.SpringWebMVCConfig;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.AnnotationConfigWebContextLoader;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Optional;
+import java.util.Random;
+
+
 
 @FixMethodOrder
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { SpringAppConfig.class })
+@ContextConfiguration(loader = AnnotationConfigWebContextLoader.class, classes = {SpringAppConfig.class })
+@WebAppConfiguration
+@Transactional
 public class DatabaseIntegrationTest {
 
     @Autowired
-    private Database database;
+    private UserRepository userRepository;
+
+    @Autowired
+    private VehicleRepository vehicleRepository;
+
+    @Autowired
+    private TripRepository tripRepository;
+
+    @Autowired
+    private TripPassangerRepository tripPassangerRepository;
 
 
-//    @Test
-//    public void getAllProducts() {
-//        List<Product> all1 = database.getAllProducts();
-//
-//        Product product = new Product();
-//        product.setTitle("p");
-//        product.setDescription("d");
-//        long time = System.currentTimeMillis();
-//        product.setDate_added(new Date(time));
-//        database.addProduct(product);
-//
-//        List<Product> all2 = database.getAllProducts();
-//
-//        assertEquals(all2.size() - all1.size(), 1);
-//    }
     @Test
     public void t1_registerDriver() {
+        User driver = new User();
+        driver.setFirstName("Vasja");
+        driver.setLastName("Pupkin");
+        driver.setLogin(generateRandomString( 5 ));
+        driver.setPassword("test");
+        driver.setPhone("+37127130976");
+        driver.setEmail("vasja@pupkin.com");
+        driver.setDriver(true);
 
-        User user = new User();
-        user.setFirstName("Vasja");
-        user.setLastName("Pupkin");
-        user.setLogin("test");
-        user.setPassword("test");
-        user.setPhone("+37127130976");
-        user.setEmail("vasja@pupkin.com");
-        user.setDriver(true);
+        userRepository.registerUser( driver );
 
-        database.registerUser(user);
-
+       // Optional<User> user = userRepository.getUserByLogin( driver.getLogin() );
+        //driver.setId( user.get().getId() );
     }
 
 
     @Test
     public void t2_addVehicle() {
-
-        User user = new User();
-        user.setId((long) 1);
-
+        User driver = new User();
+        driver.setId( (long) 31);
         Vehicle car = new Vehicle();
-        car.setUser(user);
+        car.setUser(driver);
         car.setColor("Black");
         car.setModel("Audi A4");
         car.setYear("2015");
         car.setRegNumber("LR-5789");
 
-        database.addVehicle(car);
+        vehicleRepository.addVehicle(car);
 
     }
 
@@ -79,15 +86,15 @@ public class DatabaseIntegrationTest {
     public void t3_addTrip() {
 
         User user = new User();
-        user.setId((long) 1);
+        user.setId((long) 33);
 
         Vehicle car = new Vehicle();
-        car.setId((long) 1);
+        car.setId((long) 19);
 
         Trip trip = new Trip();
         trip.setOrigin("Riga");
         trip.setDestination("Liepaja");
-        trip.setDate(Date.valueOf("2018-07-06"));
+        trip.setDate(Date.valueOf(  "2018-07-06"));
         trip.setTime(Time.valueOf("14:00:00"));
         trip.setComment("will pick up at Alfa");
         trip.setPrice(Double.parseDouble("2.56"));
@@ -96,7 +103,7 @@ public class DatabaseIntegrationTest {
         trip.setUser(user);
         trip.setCar(car);
 
-        database.addTrip(trip);
+        tripRepository.addTrip(trip);
 
     }
 
@@ -112,7 +119,7 @@ public class DatabaseIntegrationTest {
         user.setEmail("petja@pervij.com");
         user.setDriver(false);
 
-        database.registerUser(user);
+        userRepository.registerUser(user);
 
     }
 
@@ -120,17 +127,23 @@ public class DatabaseIntegrationTest {
     public void t5_addTripPassangers() {
 
         Trip trip = new Trip();
-        trip.setId((long) 1);
+        trip.setId((long) 37);
 
         User passanger = new User();
-        passanger.setId((long) 2);
+        passanger.setId((long) 31);
 
         TripPassanger tripPassanger = new TripPassanger();
         tripPassanger.setTrip(trip);
         tripPassanger.setUser(passanger);
 
-        database.addTripPassanger(tripPassanger);
+        tripPassangerRepository.addTripPassanger(tripPassanger);
 
+    }
+
+
+    private String generateRandomString(int bound) {
+        Random random = new Random();
+        return String.valueOf( random.nextInt(bound)  );
     }
 
 }

@@ -66,5 +66,4 @@ public class TripRepositoryImpl extends ORMRepository implements TripRepository{
         session().update(updatedTrip);
     }
 
-
 }

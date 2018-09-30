@@ -1,4 +1,4 @@
-package mvc_temp.mvc;
+package lv.javaguru.java2.web.mvc;
 
 public class MVCModel {
 

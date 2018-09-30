@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
 
@@ -35,20 +36,20 @@ public class AddTripServiceImpl implements AddTripService{
         Trip trip = new Trip();
 
         User driver = new User();
-        driver.setId(request.getDriverId());
+        driver.setId( Long.valueOf( request.getDriverId() ) );
 
         Vehicle car = new Vehicle();
-        car.setId(request.getVehicleId());
+        car.setId( Long.valueOf( request.getVehicleId() ) );
 
         trip.setUser(driver);
         trip.setCar(car);
-        trip.setPassangerCount(request.getPassangerCount());
+        trip.setPassangerCount( Integer.parseInt( request.getPassangerCount() ) );
         trip.setDestination(request.getDestination());
         trip.setOrigin(request.getOrigin());
-        trip.setPrice(request.getPrice());
+        trip.setPrice( Double.valueOf( request.getPrice() ) );
         trip.setComment(request.getComment());
         trip.setTime( Time.valueOf( request.getTime() ) );
-        trip.setDate(request.getDate());
+        trip.setDate( Date.valueOf(request.getDate()));
         trip.setStatus(TripStatus.PENDING);
 
         tripRepository.addTrip(trip);

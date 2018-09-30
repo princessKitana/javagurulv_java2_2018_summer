@@ -2,8 +2,11 @@ package lv.javaguru.java2.buisnesslogic.trip.applyForTrip;
 
 import lv.javaguru.java2.buisnesslogic.ApplicationError;
 import lv.javaguru.java2.buisnesslogic.TripStatus;
+import lv.javaguru.java2.database.TripPassangerRepository;
 import lv.javaguru.java2.database.TripRepository;
 import lv.javaguru.java2.database.UserRepository;
+import lv.javaguru.java2.domain.Trip;
+import lv.javaguru.java2.domain.TripPassanger;
 import lv.javaguru.java2.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,6 +24,9 @@ public class ApplyForTripValidatorImpl implements ApplyForTripValidator {
     @Autowired
     TripRepository tripRepository;
 
+    @Autowired
+    TripPassangerRepository tripPassangerRepository;
+
     @Override
     public List<ApplicationError> validate(ApplyForTripRequest request){
 
@@ -28,10 +34,8 @@ public class ApplyForTripValidatorImpl implements ApplyForTripValidator {
 
         checkUserExist(request.getPassanger().getId()).ifPresent(applicationErrors::add);
         checkPendingTripExist(request.getTrip().getId()).ifPresent(applicationErrors::add);
-        //TODO check passanger alreay apllied?
-        //TODO check passanger apllied is not trip driver
-        //TODO check passanger seats availiable
-        //TODO check trip is pending
+        checkPassangerNotTripDriver(request.getPassanger(), request.getTrip()).ifPresent(applicationErrors::add);
+        checkPassangerIsAlreadyApplied(request.getPassanger().getId(), request.getTrip().getId()).ifPresent(applicationErrors::add);
 
             return applicationErrors;
         }
@@ -61,6 +65,30 @@ public class ApplyForTripValidatorImpl implements ApplyForTripValidator {
         }
 
 
+    }
+
+
+    private Optional<ApplicationError> checkPassangerIsAlreadyApplied(Long passangerId, Long tripId) {
+
+            Optional<TripPassanger> tp = tripPassangerRepository.checkPassangerAppliedForTrip( passangerId, tripId );
+            if (!tp.isPresent()) {
+                return Optional.empty();
+            } else
+                return Optional.of( new ApplicationError( "passanger", "Already applied" ) );
+        }
+
+
+    private Optional<ApplicationError> checkPassangerNotTripDriver(User passanger, Trip trip) {
+
+        Optional<Trip> tripFromDB = tripRepository.getTripById(trip.getId());
+        if (!tripFromDB.isPresent()) {
+            return Optional.empty();
+        } else {
+            if(tripFromDB.get().getUser().getId()==passanger.getId())
+                return Optional.of( new ApplicationError( "driverId", "Driver cannot be passanger" ) );
+            else
+                return Optional.empty();
+        }
     }
 
 

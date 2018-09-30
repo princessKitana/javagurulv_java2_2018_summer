@@ -1,9 +1,8 @@
-package lv.javaguru.java2.acceptancetests.ApplyForTripControllerAcceptanceTest;
+package lv.javaguru.java2.acceptancetests.applyForTripControllerAcceptanceTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lv.javaguru.java2.web.dtos.ApplicationExceptionDTO;
 import lv.javaguru.java2.web.dtos.TripPassangerDTO;
-import lv.javaguru.java2.web.dtos.UserDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -19,8 +18,8 @@ public class ApplyForTripControllerActions {
     public TripPassangerDTO createTripApplication() {
         TripPassangerDTO tp = new TripPassangerDTO();
 
-        tp.setPassanger((long) 1);
-        tp.setTrip((long) 1);
+        tp.setPassanger((long) 32); //Must exist in DB
+        tp.setTrip((long) 53); //Must exist in DB
 
         return tp;
     }
@@ -37,12 +36,6 @@ public class ApplyForTripControllerActions {
         return response.getBody();
     }
 
-//    public TripPassangerDTO getTrip(Long tripId) {
-//        ResponseEntity<TripPassangerDTO> response =
-//                restTemplate.getForEntity(
-//                        BASE_URL + "/" + tripId, TripPassangerDTO.class);
-//        return response.getBody();
-//    }
 
     public ResponseEntity<ApplicationExceptionDTO> applyForTripWithException(TripPassangerDTO tp) {
 

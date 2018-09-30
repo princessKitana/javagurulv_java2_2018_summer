@@ -21,6 +21,11 @@ public class RegisterUserRequest {
         this.phone = user.getPhone();
     }
 
+    public RegisterUserRequest() {
+
+    }
+
+
     public String getLogin() {
         return login;
     }

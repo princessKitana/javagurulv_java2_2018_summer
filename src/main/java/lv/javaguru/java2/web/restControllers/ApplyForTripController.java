@@ -1,4 +1,4 @@
-package lv.javaguru.java2.web;
+package lv.javaguru.java2.web.restControllers;
 
 import lv.javaguru.java2.buisnesslogic.trip.addtrip.AddTripRequest;
 import lv.javaguru.java2.buisnesslogic.trip.addtrip.AddTripResponse;

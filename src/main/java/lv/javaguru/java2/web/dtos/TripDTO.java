@@ -14,9 +14,9 @@ public class TripDTO {
     private Long id;
     private String origin;
     private String destination;
-    private Date date;
+    private String date;
     private String time;
-    private Integer passangerCount;
+    private String passangerCount;
     private Double price;
     private String status;
     private Long driverId;
@@ -30,10 +30,10 @@ public class TripDTO {
         this.id = trip.getId();
         this.origin = trip.getOrigin();
         this.destination = trip.getDestination();
-        this.date = trip.getDate();
+        this.date = String.valueOf( trip.getDate() );
         this.time = String.valueOf( trip.getTime() );
         this.status = String.valueOf( trip.getStatus() );
-        this.passangerCount = trip.getPassangerCount();
+        this.passangerCount = String.valueOf( trip.getPassangerCount() );
         this.price = trip.getPrice();
         this.driverId = trip.getUser().getId();
         this.vehicleId = trip.getCar().getId();
@@ -80,11 +80,11 @@ public class TripDTO {
         this.destination = destination;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -96,11 +96,11 @@ public class TripDTO {
         this.time = time;
     }
 
-    public int getPassangerCount() {
+    public String getPassangerCount() {
         return passangerCount;
     }
 
-    public void setPassangerCount(int passangerCount) {
+    public void setPassangerCount(String passangerCount) {
         this.passangerCount = passangerCount;
     }
 

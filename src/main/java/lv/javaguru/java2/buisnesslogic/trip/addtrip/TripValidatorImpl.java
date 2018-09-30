@@ -33,12 +33,12 @@ public class TripValidatorImpl implements TripValidator {
 
         checkOriginNotBlank(request.getOrigin()).ifPresent(applicationErrors::add);
         checkDestinationNotBlank(request.getDestination()).ifPresent(applicationErrors::add);
-        checkPriceValid(request.getPrice()).ifPresent(applicationErrors::add);
+        checkPriceValid( Double.valueOf( request.getPrice() ) ).ifPresent(applicationErrors::add);
         //TODO DATE format validation
         checkDateValid(request.getDate()).ifPresent(applicationErrors::add);
-        checkDriverExist(request.getDriverId()).ifPresent(applicationErrors::add);
+        checkDriverExist( Long.valueOf( request.getDriverId() ) ).ifPresent(applicationErrors::add);
         checkPassengerCount(request.getPassangerCount()).ifPresent(applicationErrors::add);
-        checkVehicleExistsAndBelongsToDriver(request.getVehicleId(), request.getDriverId()).ifPresent(applicationErrors::add);
+        checkVehicleExistsAndBelongsToDriver(Long.valueOf( request.getVehicleId()), Long.valueOf( request.getDriverId())).ifPresent(applicationErrors::add);
         checkTimeValid(request.getTime()).ifPresent(applicationErrors::add);
 
         return applicationErrors;
@@ -72,19 +72,20 @@ public class TripValidatorImpl implements TripValidator {
         return Optional.empty();
     }
 
-    private  Optional<ApplicationError> checkDateValid(Date date) {
-
-        long time = System.currentTimeMillis();
-        Date systemDate = new Date(time);
-
+    private  Optional<ApplicationError> checkDateValid(String date) {
         try {
-            if (date == null) {
-                return Optional.of(new ApplicationError("date", "Date must be filled"));
-            }else {
-                if (date.before(systemDate)) {
+            if (date == null || date=="") {
+                return Optional.of( new ApplicationError( "date", "Date must be filled" ) );
+            }
+
+            long time = System.currentTimeMillis();
+            Date systemDate = new Date(time);
+            Date recievedDate = Date.valueOf( date );
+
+            if (recievedDate.before(systemDate)) {
                     return Optional.of(new ApplicationError("date", "Date must be in future"));
                 }
-            }
+
         } catch (Exception ex) {
             return Optional.of(new ApplicationError("date", "Date not valid"));
         }
@@ -99,9 +100,9 @@ public class TripValidatorImpl implements TripValidator {
             return Optional.empty();
     }
 
-    private Optional<ApplicationError>  checkPassengerCount(Integer count) {
+    private Optional<ApplicationError>  checkPassengerCount(String count) {
 
-        if (count<=0) {
+        if (count.isEmpty() || Integer.valueOf(count) <=0) {
             return Optional.of(new ApplicationError("passangerCount", "Must be more than 0"));
         }else
             return Optional.empty();

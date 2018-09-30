@@ -3,6 +3,8 @@ package lv.javaguru.java2.acceptancetests.addTripControllerTests;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lv.javaguru.java2.web.dtos.ApplicationExceptionDTO;
 import lv.javaguru.java2.web.dtos.TripDTO;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -10,6 +12,8 @@ import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddTripControllerActions {
 
@@ -20,15 +24,15 @@ public class AddTripControllerActions {
     public TripDTO createTrip() {
         TripDTO trip = new TripDTO();
 
-        trip.setDriverId((long) 3);
-        trip.setVehicleId((long) 3);
+        trip.setDriverId((long) 31); //Must exist in DB
+        trip.setVehicleId((long) 21); //Must exist in DB
         trip.setOrigin("Riga");
         trip.setDestination("Liepaja");
-        trip.setDate(Date.valueOf("2022-07-06"));
+        trip.setDate("2022-07-06");
         trip.setTime("14:00:00");
         trip.setComment("will pick up at Alfa");
         trip.setPrice(Double.parseDouble("2.56"));
-        trip.setPassangerCount(2);
+        trip.setPassangerCount("2");
 
         return trip;
     }
@@ -50,6 +54,21 @@ public class AddTripControllerActions {
                 restTemplate.getForEntity(
                         BASE_URL + "/" + tripId, TripDTO.class);
         return response.getBody();
+    }
+
+
+
+    public List<TripDTO> getAllTrips() {
+
+        ResponseEntity<List<TripDTO>> response =
+                restTemplate.exchange(
+                        BASE_URL + "/",
+                        HttpMethod.GET,
+                        null,
+                        new ParameterizedTypeReference<List<TripDTO>>() {
+                        });
+        List<TripDTO> trips = response.getBody();
+        return trips;
     }
 
     public ResponseEntity<ApplicationExceptionDTO> addTripWithException(TripDTO trip) {

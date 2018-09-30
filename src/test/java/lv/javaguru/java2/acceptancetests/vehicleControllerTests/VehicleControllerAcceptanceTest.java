@@ -106,7 +106,7 @@ public class VehicleControllerAcceptanceTest {
         car.setYear("");
         car.setRegNumber("");
 
-        VehicleDTO carResp = actions.createVehicle();
+        VehicleDTO carResp = actions.addVehicle(car);
         assertTrue(carResp.getId() != null);
     }
 

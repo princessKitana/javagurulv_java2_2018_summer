@@ -1,4 +1,4 @@
-package lv.javaguru.java2.web;
+package lv.javaguru.java2.web.restControllers;
 
 import lv.javaguru.java2.buisnesslogic.ApplicationError;
 import lv.javaguru.java2.buisnesslogic.TripStatus;
@@ -37,13 +37,13 @@ public class AddTripController {
     public ResponseEntity<TripDTO> addTrip(@RequestBody TripDTO tripDTO) {
 
         AddTripRequest request = new AddTripRequest(  );
-        request.setDriverId(tripDTO.getDriverId());
-        request.setVehicleId(tripDTO.getVehicleId());
+        request.setDriverId( String.valueOf( tripDTO.getDriverId() ) );
+        request.setVehicleId( String.valueOf( tripDTO.getVehicleId() ) );
         request.setDestination(tripDTO.getDestination());
         request.setDate(tripDTO.getDate());
 
         request.setTime(tripDTO.getTime());
-        request.setPrice(tripDTO.getPrice());
+        request.setPrice(String.valueOf(tripDTO.getPrice()));
         request.setComment(tripDTO.getComment());
         request.setPassangerCount(tripDTO.getPassangerCount());
         request.setOrigin(tripDTO.getOrigin());

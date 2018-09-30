@@ -10,24 +10,24 @@ public class AddTripRequest {
 
     private String origin;
     private String destination;
-    private Date date;
+    private String date;
     private String time;
-    private Integer passangerCount;
-    private Double price;
+    private String passangerCount;
+    private String price;
     private String comment;
-    private Long driverId;
-    private Long vehicleId;
+    private String driverId;
+    private String vehicleId;
 
     public AddTripRequest(Trip trip) {
         this.origin = trip.getOrigin();
         this.destination = trip.getDestination();
-        this.date = trip.getDate();
+        this.date = String.valueOf( trip.getDate() );
         this.time = String.valueOf( trip.getTime() );
-        this.passangerCount = trip.getPassangerCount();
-        this.price = trip.getPrice();
+        this.passangerCount = String.valueOf( trip.getPassangerCount() );
+        this.price = String.valueOf( trip.getPrice() );
         this.comment = trip.getComment();
-        this.driverId = trip.getUser().getId();
-        this.vehicleId = trip.getCar().getId();
+        this.driverId = String.valueOf( trip.getUser().getId() );
+        this.vehicleId = String.valueOf( trip.getCar().getId() );
     }
 
     public AddTripRequest() {
@@ -49,11 +49,11 @@ public class AddTripRequest {
         this.destination = destination;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -65,19 +65,19 @@ public class AddTripRequest {
         this.time = time;
     }
 
-    public int getPassangerCount() {
+    public String getPassangerCount() {
         return passangerCount;
     }
 
-    public void setPassangerCount(int passangerCount) {
+    public void setPassangerCount(String passangerCount) {
         this.passangerCount = passangerCount;
     }
 
-    public Double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -89,19 +89,19 @@ public class AddTripRequest {
         this.comment = comment;
     }
 
-    public Long getDriverId() {
+    public String getDriverId() {
         return driverId;
     }
 
-    public void setDriverId(Long driverId) {
+    public void setDriverId(String driverId) {
         this.driverId = driverId;
     }
 
-    public Long getVehicleId() {
+    public String getVehicleId() {
         return vehicleId;
     }
 
-    public void setVehicleId(Long vehicleId) {
+    public void setVehicleId(String vehicleId) {
         this.vehicleId = vehicleId;
     }
 }

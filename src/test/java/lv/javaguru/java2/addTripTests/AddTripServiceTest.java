@@ -40,6 +40,7 @@ public class AddTripServiceTest {
         Trip trip = new Trip();
         trip.setCar(car);
         trip.setUser(user);
+        trip.setPassangerCount( 2 );
 
         AddTripRequest request = new AddTripRequest(trip);
 

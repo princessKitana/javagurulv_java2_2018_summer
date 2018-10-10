@@ -1,0 +1,12 @@
+0:0:0:0:0:0:0:1 - - [10/Oct/2018:12:05:56 +0300] "GET /java2/trips HTTP/1.1" 200 5852 http-bio-8080-exec-1 448
+0:0:0:0:0:0:0:1 - - [10/Oct/2018:12:05:56 +0300] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-3 0
+0:0:0:0:0:0:0:1 - - [10/Oct/2018:12:06:07 +0300] "GET /java2/trips/37 HTTP/1.1" 200 641 http-bio-8080-exec-4 77
+0:0:0:0:0:0:0:1 - - [10/Oct/2018:12:07:13 +0300] "GET /java2/register HTTP/1.1" 200 1955 http-bio-8080-exec-7 63
+0:0:0:0:0:0:0:1 - - [10/Oct/2018:12:08:29 +0300] "POST /java2/registerProcess HTTP/1.1" 403 71 http-bio-8080-exec-10 112
+0:0:0:0:0:0:0:1 - - [10/Oct/2018:12:08:36 +0300] "POST /java2/registerProcess HTTP/1.1" 200 149 http-bio-8080-exec-10 67
+0:0:0:0:0:0:0:1 - - [10/Oct/2018:12:09:15 +0300] "GET /java2/trips HTTP/1.1" 200 5852 http-bio-8080-exec-10 20
+0:0:0:0:0:0:0:1 - - [10/Oct/2018:12:09:17 +0300] "GET /java2/index.html HTTP/1.1" 404 949 http-bio-8080-exec-10 10
+0:0:0:0:0:0:0:1 - - [10/Oct/2018:12:09:45 +0300] "GET /java2/index.html HTTP/1.1" 404 949 http-bio-8080-exec-10 3
+0:0:0:0:0:0:0:1 - - [10/Oct/2018:12:10:24 +0300] "GET /java2/index.html HTTP/1.1" 404 949 http-bio-8080-exec-9 2
+0:0:0:0:0:0:0:1 - - [10/Oct/2018:12:10:24 +0300] "GET /java2/trips HTTP/1.1" 200 5847 http-bio-8080-exec-10 1375
+0:0:0:0:0:0:0:1 - - [10/Oct/2018:12:10:32 +0300] "GET /java2/trips HTTP/1.1" 200 5847 http-bio-8080-exec-9 40

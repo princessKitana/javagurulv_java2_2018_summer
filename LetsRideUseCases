@@ -4,8 +4,9 @@ Example: http://www.autostop.online/
 
 Use-cases:
 1. User can register
+1. Login/Logout
 2. User can add his vehicle
-3. User can add
+3. User can register trip
 -4. User can cancel trip
 5. User can view all trips
 -6. Users can search trips by origin/destination

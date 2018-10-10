@@ -1,6 +1,7 @@
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\trip\get\GetTripService.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\vehicle\get\GetVehicleServiceImpl.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\database\ORM\UserRepositoryImpl.java
+C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\web\mvc\AddTripMVCController.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\trip\applyForTrip\ApplyForTripResponse.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\domain\User.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\trip\addtrip\AddTripService.java
@@ -16,7 +17,6 @@ C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\ve
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\web\mvc\MVCModel.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\database\ORM\ORMRepository.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\domain\Trip.java
-C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\web\mvc\TripMVCController.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\trip\applyForTrip\ApplyForTripServiceImpl.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\domain\Vehicle.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\user\register\RegisterUserResponse.java
@@ -29,9 +29,9 @@ C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\tr
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\trip\applyForTrip\ApplyForTripService.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\database\UserRepository.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\domain\lamda\LamdaTest.java
+C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\web\mvc2\TripsMVCController.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\Application.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\user\get\GetUserServiceImpl.java
-C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\web\mvc\HelloWorldController.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\ApplicationException.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\domain\lamda\SearchCriteria.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\config\SpringAppConfig.java
@@ -39,8 +39,8 @@ C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\database\ORM\Veh
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\web\restControllers\ApplyForTripController.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\ApplicationError.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\user\get\GetUserResponse.java
-C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\web\mvc\MVCDispatcherFilter.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\trip\applyForTrip\ApplyForTripRequest.java
+C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\web\mvc2\RegisterMVCController.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\vehicle\get\GetVehicleService.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\web\mvc\MVCController.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\user\get\GetUserService.java
@@ -51,7 +51,6 @@ C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\web\dtos\UserDTO
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\web\restControllers\VehicleController.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\TripStatus.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\database\JDBC\JDBCDatabaseImpl.java
-C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\web\mvc\TripsMVCController.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\user\register\RegisterUserRequest.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\trip\get\GetTripResponse.java
 C:\javagurulv_java2_2018_summer\src\main\java\lv\javaguru\java2\buisnesslogic\vehicle\addvehicle\AddVehicleService.java

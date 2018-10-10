@@ -20,20 +20,14 @@
         <th>Comment</th>
     </tr>
 
-<%
-    GetTripResponse r = (GetTripResponse) request.getAttribute("model") ;
-    TripDTO trip = r.getTrip();
-
- %>
-
     <tr>
-        <td><%=trip.getOrigin()%></td>
-        <td><%=trip.getDestination()%></td>
-        <td><%=trip.getDate()%></td>
-        <td><%=trip.getTime()%></td>
-        <td><%=trip.getPrice()%></td>
-        <td><%=trip.getStatus()%></td>
-        <td><%=trip.getComment()%></td>
+        <td>${trip.getOrigin()}></td>
+        <td>${trip.getDestination()}</td>
+        <td>${trip.getDate()}</td>
+        <td>${trip.getTime()}</td>
+        <td>${trip.getPrice()}</td>
+        <td>${trip.getStatus()}</td>
+        <td>${trip.getComment()}</td>
     </tr>
 
 </body>

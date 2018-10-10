@@ -3,6 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
 <style>
     body {background-color: powderblue;}
@@ -29,6 +30,7 @@
     <title>Let's Ride</title>
 </head>
 <body>
+<a href="index">Main</a>
 <h1>Trips</h1>
 <table style="width:100%" >
     <tr>
@@ -42,25 +44,23 @@
     </tr>
 
 
-<%
-    GetAllTripsResponse r = (GetAllTripsResponse) request.getAttribute("model") ;
-List<TripDTO> trips = r.getTrips();
-
- for(int i = 0; i < trips.size(); i+=1) { %>
-<tr>
-    <td><%=trips.get(i).getOrigin()%></td>
-    <td><%=trips.get(i).getDestination()%></td>
-    <td><%=trips.get(i).getDate()%></td>
-    <td><%=trips.get(i).getTime()%></td>
-    <td><%=trips.get(i).getPrice()%></td>
-    <td><%=trips.get(i).getStatus()%></td>
-    <td><%=trips.get(i).getComment()%></td>
-</tr>
-<% } %>
+   <c:forEach items="${trips}" var="trip">
+       <tr>
+           <td>${trip.getOrigin()}</td>
+          <td>${trip.getDestination()}</td>
+         <td>${trip.getDate()}</td>
+        <td>${trip.getTime()}</td>
+          <td>${trip.getPrice()}</td>
+          <td>${trip.getStatus()}</td>
+        <td>${trip.getComment()}</td>
+      </tr>
+    </c:forEach>
 
 
 
 </table>
+
+
 
 
 </body>

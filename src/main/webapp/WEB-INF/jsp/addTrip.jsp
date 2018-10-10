@@ -10,7 +10,7 @@
 <body>
 <h1>Add trip</h1>
 
-<form method="post">
+<form:form id="addTripForm" modelAttribute="trip" action="addTripProcess" method="post">
     <table style="with: 50%">
         <tr>
             <td>Origin</td>
@@ -52,20 +52,7 @@
 
     </table>
     <input type="submit" value="Submit" /></form>
-
-<%
-AddTripResponse r = (AddTripResponse) request.getAttribute("model") ;
-if (!r.isSuccess()){
-    List<ApplicationError> errors = r.getApplicationErrors();
-
-    for(int i = 0; i < errors.size(); i+=1) { %>
-    <p><%=errors.get(i).getField()%></p>
-    <p><%=errors.get(i).getDescription()%></p>
-<%}%>
-}else{
-%><p>Trip registered!</p>
-<%}%>
-
+</form:form>
 
 </body>
 </html>

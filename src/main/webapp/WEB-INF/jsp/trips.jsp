@@ -5,25 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
-<style>
-    body {background-color: powderblue;}
-    h1   {color: blue;}
-    p    {color: red;}
 
-    table {
-        width: 100%;
-    }
-
-    th {
-        height: 50px;
-        text-align: left;
-    }
-
-    table, th, td {
-        border: 1px solid black;
-    }
-
-</style>
 
 <html>
 <head>
@@ -31,6 +13,7 @@
 </head>
 <body>
 <a href="index">Main</a>
+
 <h1>Trips</h1>
 <table style="width:100%" >
     <tr>

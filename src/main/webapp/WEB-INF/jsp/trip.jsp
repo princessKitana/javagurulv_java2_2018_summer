@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>View information about trip</h1>
-<table style="width:100%" >
+<table>
     <tr>
         <th>From</th>
         <th>To</th>

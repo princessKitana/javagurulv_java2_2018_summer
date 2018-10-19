@@ -3,12 +3,18 @@ Example: http://www.autostop.online/
 "Let's ride" hitchiking/autostop system
 
 Use-cases:
-1. User can register
-1. Login/Logout
-2. User can add his vehicle
-3. User can register trip
--4. User can cancel trip
-5. User can view all trips
--6. Users can search trips by origin/destination
-7. Users can apply for trip
--8. User can cancel application for trip
+User can register
+-Login/Logout
+
+User can add his vehicle
+-User can remove his vehicle
+-User can view his vehicles
+
+User can register trip
+-User can cancel trip
+
+User can view all trips
+-Users can search trips by origin/destination
+
+Users can apply for trip
+-User can cancel application for trip

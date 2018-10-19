@@ -1,4 +1,3 @@
-lv\javaguru\java2\web\mvc2\GlobalDefaultExceptionHandler.class
 lv\javaguru\java2\web\restControllers\VehicleController.class
 lv\javaguru\java2\buisnesslogic\trip\applyForTrip\ApplyForTripServiceImpl.class
 lv\javaguru\java2\buisnesslogic\ApplicationError.class
@@ -8,6 +7,7 @@ lv\javaguru\java2\buisnesslogic\vehicle\addvehicle\AddVehicleResponse.class
 lv\javaguru\java2\web\dtos\UserDTO.class
 lv\javaguru\java2\web\dtos\TripPassangerDTO.class
 lv\javaguru\java2\buisnesslogic\user\get\GetUserService.class
+lv\javaguru\java2\web\mvc\VehicleMVCController.class
 lv\javaguru\java2\web\restControllers\AddTripController.class
 lv\javaguru\java2\buisnesslogic\trip\applyForTrip\ApplyForTripValidatorImpl.class
 lv\javaguru\java2\buisnesslogic\user\register\RegisterUserServiceImpl.class
@@ -24,11 +24,13 @@ lv\javaguru\java2\Application.class
 lv\javaguru\java2\buisnesslogic\trip\addtrip\AddTripResponse.class
 lv\javaguru\java2\buisnesslogic\user\register\RegisterUserService.class
 lv\javaguru\java2\config\SpringAppConfig.class
+lv\javaguru\java2\web\mvc\DefaultMVCController.class
 lv\javaguru\java2\buisnesslogic\trip\get\GetTripService.class
 lv\javaguru\java2\buisnesslogic\vehicle\get\GetVehicleRequest.class
 lv\javaguru\java2\buisnesslogic\vehicle\get\GetVehicleResponse.class
 lv\javaguru\java2\buisnesslogic\trip\applyForTrip\ApplyForTripResponse.class
 lv\javaguru\java2\domain\TripPassanger.class
+lv\javaguru\java2\web\mvc\ApplyForTripMVCController.class
 lv\javaguru\java2\domain\Trip.class
 lv\javaguru\java2\buisnesslogic\trip\addtrip\AddTripService.class
 lv\javaguru\java2\domain\lamda\SearchCriteria.class
@@ -36,12 +38,13 @@ lv\javaguru\java2\web\dtos\TripDTO.class
 lv\javaguru\java2\buisnesslogic\trip\applyForTrip\ApplyForTripRequest.class
 lv\javaguru\java2\buisnesslogic\vehicle\addvehicle\AddVehicleService.class
 lv\javaguru\java2\database\UserRepository.class
-lv\javaguru\java2\web\mvc2\UserMVCController.class
 lv\javaguru\java2\buisnesslogic\user\get\GetUserRequest.class
 lv\javaguru\java2\database\TripRepository.class
 lv\javaguru\java2\buisnesslogic\vehicle\addvehicle\VehicleValidator.class
 lv\javaguru\java2\database\ORM\UserRepositoryImpl.class
 lv\javaguru\java2\buisnesslogic\TripStatus.class
+lv\javaguru\java2\web\mvc\GlobalDefaultExceptionHandler.class
+lv\javaguru\java2\web\mvc\TripsMVCController.class
 lv\javaguru\java2\web\dtos\VehicleDTO.class
 lv\javaguru\java2\domain\lamda\LamdaTest$1.class
 lv\javaguru\java2\buisnesslogic\trip\addtrip\TripValidatorImpl.class
@@ -62,10 +65,10 @@ lv\javaguru\java2\buisnesslogic\vehicle\get\GetVehicleService.class
 lv\javaguru\java2\database\ORM\ORMRepository.class
 lv\javaguru\java2\domain\lamda\TitleSearchCriteria.class
 lv\javaguru\java2\buisnesslogic\user\register\RegisterUserRequest.class
-lv\javaguru\java2\web\mvc2\TripsMVCController.class
 lv\javaguru\java2\buisnesslogic\trip\get\GetTripRequest.class
 lv\javaguru\java2\domain\lamda\LamdaTest.class
 lv\javaguru\java2\buisnesslogic\user\get\GetUserResponse.class
+lv\javaguru\java2\web\mvc\UserMVCController.class
 lv\javaguru\java2\database\VehicleRepository.class
 lv\javaguru\java2\domain\Vehicle.class
 lv\javaguru\java2\web\dtos\ApplicationExceptionDTO.class

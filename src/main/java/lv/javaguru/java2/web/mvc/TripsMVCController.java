@@ -43,10 +43,16 @@ public class TripsMVCController{
 
     }
 
-    @RequestMapping(value = "/trips/addTripProcess", method = RequestMethod.POST)
-    public ModelAndView addTrip(HttpServletRequest req,
-                                @ModelAttribute("trip") TripDTO trip ) {
+    @RequestMapping(value = "/trips/addTrip", method = RequestMethod.GET)
+    public ModelAndView showAddTripUserForm(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView mav = new ModelAndView("addTrip");
+        mav.addObject("trip", new TripDTO( ));
+        return mav;
+    }
 
+    @RequestMapping(value = "/trips/addTripProcess", method = RequestMethod.POST)
+    public ModelAndView addTrip(HttpServletRequest request,
+                                @ModelAttribute("trip") TripDTO trip ) {
 
         AddTripRequest req = new AddTripRequest();
 
@@ -62,7 +68,7 @@ public class TripsMVCController{
         req.setOrigin(trip.getOrigin());
 
         AddTripResponse resp = addTripService.addTrip(req);
-        return new ModelAndView( "addTrip", "addTrip", resp);
+        return new ModelAndView( "trips", "trips", resp);
 
     }
 

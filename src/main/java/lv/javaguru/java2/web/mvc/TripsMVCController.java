@@ -7,7 +7,12 @@ import lv.javaguru.java2.buisnesslogic.trip.get.GetAllTripsResponse;
 import lv.javaguru.java2.buisnesslogic.trip.get.GetTripRequest;
 import lv.javaguru.java2.buisnesslogic.trip.get.GetTripResponse;
 import lv.javaguru.java2.buisnesslogic.trip.get.GetTripService;
+import lv.javaguru.java2.buisnesslogic.vehicle.get.GetVehicleService;
+import lv.javaguru.java2.buisnesslogic.vehicle.getAll.GetAllVehiclesRequest;
+import lv.javaguru.java2.buisnesslogic.vehicle.getAll.GetAllVehiclesResponse;
+import lv.javaguru.java2.buisnesslogic.vehicle.getAll.GetAllVehiclesService;
 import lv.javaguru.java2.web.dtos.TripDTO;
+import lv.javaguru.java2.web.dtos.TripPassangerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -26,6 +32,9 @@ public class TripsMVCController{
     @Autowired
     AddTripService addTripService;
 
+    @Autowired
+    GetAllVehiclesService getAllVehiclesService;
+
     @RequestMapping(value = "/trips", method = RequestMethod.GET)
     public ModelAndView getTrips() {
         GetAllTripsResponse response = getTripService.getAllTrips();
@@ -34,19 +43,30 @@ public class TripsMVCController{
 
     }
 
-
     @RequestMapping(value = "/trips/{id}", method = RequestMethod.GET)
     public ModelAndView getTrip(@PathVariable("id") Long tripId) {
         GetTripRequest request = new GetTripRequest(tripId);
         GetTripResponse response = getTripService.get(request);
-        return new ModelAndView( "trip", "trip", response.getTrip() );
+        ModelAndView mav = new ModelAndView("trip");
+        mav.addObject(  "trip", response.getTrip() );
+        mav.addObject("tpDTO", new TripPassangerDTO() );
+        return mav;
+        //return new ModelAndView( "trip", "trip", response.getTrip() );
 
     }
 
     @RequestMapping(value = "/trips/addTrip", method = RequestMethod.GET)
     public ModelAndView showAddTripUserForm(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        Long userId = (Long) session.getAttribute("userId");
+
+        GetAllVehiclesRequest req = new GetAllVehiclesRequest( userId );
+        GetAllVehiclesResponse resp = getAllVehiclesService.get(req);
+
         ModelAndView mav = new ModelAndView("addTrip");
         mav.addObject("trip", new TripDTO( ));
+        mav.addObject("vehicles", resp.getCars());
+
         return mav;
     }
 

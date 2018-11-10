@@ -6,7 +6,7 @@
     <title>Registration</title>
 </head>
 <body>
-
+<%@page session="false"%>
 <%--@elvariable id="user" type=""--%>
 <form:form id="regForm" modelAttribute="user" action="registerProcess" method="post">
     <table align="center">

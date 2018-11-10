@@ -1,19 +1,25 @@
-<%@ page import="lv.javaguru.java2.buisnesslogic.trip.addtrip.AddTripResponse" %>
-<%@ page import="lv.javaguru.java2.buisnesslogic.ApplicationError" %>
-<%@ page import="java.util.List" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page import = "javax.servlet.*,java.text.*" %>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Add new trip</title>
 </head>
 <body>
+<a href="<spring:url value="/index"/>">Let's Ride</a>
+
 <h1>Add trip</h1>
 
 <%--@elvariable id="trip" type=""--%>
 <form:form id="addTripForm" modelAttribute="trip" action="addTripProcess" method="post">
-    <table style="with: 50%">
+    <table>
         <tr>
             <td><form:label path="origin">Origin</form:label></td>
             <td><form:input path="origin" name="origin" id="origin" type="text" autocomplete = "on"/></td>
@@ -28,7 +34,7 @@
         </tr>
         <tr>
             <td><form:label path="time">Time</form:label></td>
-            <td><form:input path="time" name="time" id="time" type="time" value="17:00:00"/></td>
+            <td>  <form:input path="time" id="time" /> </td>
         </tr>
 
         <tr>
@@ -47,18 +53,38 @@
         </tr>
 
         <tr>
-            <td><form:label path="driverId">DriverId</form:label></td>
-            <td><form:input path="driverId" name="driverId" id="driverId" type="number" /></td>
+            <td><form:input path="driverId" name="driverId" id="driverId" type="hidden" value="${userId}" /></tr>
         </tr>
+
         <tr>
-            <td><form:label path="vehicleId">VehicleId</form:label></td>
-            <td><form:input path="vehicleId" name="vehicleId" id="vehicleId" type="number" /></td>
+
+            <td><form:label path="vehicleId">Car</form:label></td>
+
+            <td>
+            <form:select path="vehicleId" id="vehicleId">Car</>
+            <c:forEach var="vehicles" items="${vehicles}">
+                <option value="${vehicles.id}">${vehicles.model}</option>
+            </c:forEach>
+            </form:select>
+            </td>
+
         </tr>
+
     </table>
+
     <input type="submit" value="Submit" /></form>
 
 </form:form>
 
-<p>${resp.isSuccess()}</p>
+<%
+    Date dNow = new Date( );
+    SimpleDateFormat ft =
+            new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+    System.out.print("<p>"+dNow+"</p>");
+    System.out.print(ft.format(dNow));
+
+%>
+
+
 </body>
 </html>

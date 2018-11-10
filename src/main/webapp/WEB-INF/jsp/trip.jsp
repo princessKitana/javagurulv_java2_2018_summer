@@ -1,14 +1,16 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="lv.javaguru.java2.buisnesslogic.trip.get.GetTripResponse" %>
-<%@ page import="lv.javaguru.java2.web.dtos.TripDTO" %>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Trip Info</title>
+
 </head>
 <body>
-<h1>View information about trip</h1>
+<a href="<spring:url value="/index"/>">Let's Ride</a>
+<h1>Apply for trip</h1>
 <table>
     <tr>
         <th>From</th>
@@ -21,7 +23,7 @@
     </tr>
 
     <tr>
-        <td>${trip.getOrigin()}></td>
+        <td>${trip.getOrigin()}</td>
         <td>${trip.getDestination()}</td>
         <td>${trip.getDate()}</td>
         <td>${trip.getTime()}</td>
@@ -29,6 +31,23 @@
         <td>${trip.getStatus()}</td>
         <td>${trip.getComment()}</td>
     </tr>
+</table>
+
+    <%--@elvariable id="tpDTO" type=""--%>
+    <form:form id="applyForTripForm" modelAttribute="tpDTO" action="applyForTripProcess" method="post">
+    <table >
+        <tr>
+            <td><form:input path="trip" name="trip" id="trip" type="hidden" value="${trip.getId()}" /></td>
+        </tr>
+        <tr>
+            <td><form:input path="passanger" name="passanger" id="passanger" type="hidden" value="${userId}"  /></td>
+        </tr>
+    </table >
+    <input type="submit" value="Apply" /></form>
+    </form:form>
+
+    ${tpDTO.id == null ? "not applied yet" : "You are succesflly applied!"}
+
 
 </body>
 </html>

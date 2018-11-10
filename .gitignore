@@ -4,3 +4,10 @@
 #IDEA ignore personal project settings
 .idea/
 *.iml
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.iml

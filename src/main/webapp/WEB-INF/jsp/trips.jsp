@@ -4,18 +4,18 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
-
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
 <head>
     <title>Let's Ride</title>
 </head>
 <body>
-<a href="index">Main</a>
+<a href="<spring:url value="/index"/>">Let's Ride</a>
+
 
 <h1>Trips</h1>
-<table style="width:100%" >
+<table>
     <tr>
         <th>From</th>
         <th>To</th>
@@ -36,6 +36,7 @@
           <td>${trip.getPrice()}</td>
           <td>${trip.getStatus()}</td>
         <td>${trip.getComment()}</td>
+           <td> <a href="<spring:url value="/trips/${trip.getId()} "/>">View</a></td>
       </tr>
     </c:forEach>
 

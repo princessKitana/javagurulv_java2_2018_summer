@@ -1,3 +1,4 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="lv.javaguru.java2.buisnesslogic.trip.get.GetTripResponse" %>
@@ -8,6 +9,9 @@
     <title>Vehicle Info</title>
 </head>
 <body>
+<a href="<spring:url value="/index"/>">Let's Ride</a>
+
+
 <h1>Vehicle information</h1>
 <table >
     <tr>

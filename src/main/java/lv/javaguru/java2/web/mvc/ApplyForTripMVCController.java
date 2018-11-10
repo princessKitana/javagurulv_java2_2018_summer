@@ -32,16 +32,8 @@ public class ApplyForTripMVCController {
         ApplyForTripResponse response = applyForTripService.applyForTrip(request);
         tpDTO.setId(response.getTripId());
 
-        return new ModelAndView( "applyForTrip", "tpDTO", tpDTO);
+        return new ModelAndView( "trip", "tpDTO", tpDTO);
 
-    }
-
-
-    @RequestMapping(value = "/trips/applyForTrip", method = RequestMethod.GET)
-    public ModelAndView showApplyForTripForm() {
-        ModelAndView mav = new ModelAndView("applyForTrip");
-        mav.addObject("tpDTO", new TripPassangerDTO() );
-        return mav;
     }
 
 }

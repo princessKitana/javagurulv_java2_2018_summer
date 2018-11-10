@@ -2,6 +2,7 @@ package lv.javaguru.java2.database;
 
 import lv.javaguru.java2.domain.Vehicle;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface VehicleRepository {
@@ -10,4 +11,7 @@ public interface VehicleRepository {
     Optional<Vehicle> getVehicle(Long vehicleId);
 
     Optional<Vehicle> checkVehicleBelongsToDriver(Long vehicleId, Long driverId);
+
+    List<Vehicle> getAllVehicles(Long userId);
+
 }

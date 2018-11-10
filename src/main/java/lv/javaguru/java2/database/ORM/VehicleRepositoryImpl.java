@@ -6,6 +6,8 @@ import lv.javaguru.java2.domain.Vehicle;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -35,4 +37,16 @@ public class VehicleRepositoryImpl extends ORMRepository implements VehicleRepos
                 .uniqueResult();
         return Optional.ofNullable(car);
     }
+
+    @Override
+    public List<Vehicle> getAllVehicles(Long userId){
+        User user = new User();
+        user.setId( userId );
+        List <Vehicle> cars = session().createCriteria(Vehicle.class)
+                .add(Restrictions.eq("user", user))
+                .list();
+
+        return cars;
+    }
+
 }

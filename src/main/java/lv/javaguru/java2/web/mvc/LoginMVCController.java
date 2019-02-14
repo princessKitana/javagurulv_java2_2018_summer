@@ -22,7 +22,6 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginMVCController {
 
-
     @Autowired
     LoginUserService loginUserService;
 

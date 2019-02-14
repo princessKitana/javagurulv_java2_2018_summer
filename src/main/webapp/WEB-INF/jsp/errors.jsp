@@ -4,20 +4,37 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Errors:</title>
-</head>
-<body>
-<a href="<spring:url value="/index"/>">Let's Ride</a>
-<table>
-<c:forEach items="${exception.getErrors()}" var="appExDTO">
-    <tr>
-        <td>${appExDTO.getField()}</td>
-        <td>${appExDTO.getDescription()}</td>
 
-    </tr>
-</c:forEach>
-<table>
+<head>
+    <title>Let's ride</title>
+    <style><%@include file="/WEB-INF/jsp/style.css"%></style>
+</head>
+
+<body>
+
+<%@page session="false"%>
+<div class="wrapper">
+    <header class="header">
+        <h1><a href="<spring:url value="/index"/>">Let's ride</a></h1>
+    </header>
+    <aside class="sidebar">
+    </aside>
+
+    <article class="content">
+    <table>
+        <c:forEach items="${exception.getErrors()}" var="appExDTO">
+        <tr>
+            <td>${appExDTO.getField()}</td>
+            <td>${appExDTO.getDescription()}</td>
+        </tr>
+        </c:forEach>
+    </table>
+    </article>
+</div>
+
+
+
+
 
 </body>
 </html>

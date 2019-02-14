@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"lv.javaguru.java2.web"})
-@Import({ SecurityConfig.class })
+//@Import({ SecurityConfig.class })
 public class SpringWebMVCConfig extends WebMvcConfigurerAdapter {
 
 

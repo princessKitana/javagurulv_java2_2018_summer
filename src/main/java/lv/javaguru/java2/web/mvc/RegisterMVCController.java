@@ -26,7 +26,8 @@ public class RegisterMVCController {
     @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
     public ModelAndView registerUser(HttpServletRequest request,
                                      HttpServletResponse response,
-                                     @ModelAttribute("user") UserDTO user) {
+                                     @ModelAttribute("user")
+                                                 UserDTO user) {
 
         RegisterUserRequest req = new RegisterUserRequest();
         req.setFirstName( request.getParameter( "firstname" ) );

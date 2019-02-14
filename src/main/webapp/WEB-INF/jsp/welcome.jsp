@@ -4,27 +4,32 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <html>
+
 <head>
     <title>Let's ride</title>
+    <style><%@include file="/WEB-INF/jsp/style.css"%></style>
+    <%@page session="false"%>
 </head>
 
 <body>
-<%@page session="false"%>
 
-<H1>Let's ride</H1>
-<table>
+<div class="wrapper">
+    <header class="header">
+        <h1><a href="<spring:url value="/"/>">Let's ride</a></h1>
+    </header>
 
+    <aside class="sidebar">
+        <a href="<spring:url value="/register"/>">Register</a> <br>
+        <a href="<spring:url value="/login"/>">Login</a>
+    </aside>
 
-    <tr>
-        <th> <a href="<spring:url value="/register"/>">Register</a> </th>
-    </tr>
+    <article class="content">
+        <h1>Sampe header</h1>
+        <p>This example uses line-based positioning, to position the header and footer, stretching them across the grid.</p>
+    </article>
 
-    <tr>
-        <th> <a href="<spring:url value="/login"/>">Login</a> </th>
-    </tr>
-
-</table>
-
+    <footer class="footer">My footer</footer>
+</div>
 
 </body>
 </html>

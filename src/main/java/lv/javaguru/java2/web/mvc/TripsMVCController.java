@@ -48,10 +48,10 @@ public class TripsMVCController{
         GetTripRequest request = new GetTripRequest(tripId);
         GetTripResponse response = getTripService.get(request);
         ModelAndView mav = new ModelAndView("trip");
-        mav.addObject(  "trip", response.getTrip() );
+        mav.addObject(  "tripDTO", response.getTrip() );
         mav.addObject("tpDTO", new TripPassangerDTO() );
         return mav;
-        //return new ModelAndView( "trip", "trip", response.getTrip() );
+
 
     }
 
@@ -72,7 +72,7 @@ public class TripsMVCController{
 
     @RequestMapping(value = "/trips/addTripProcess", method = RequestMethod.POST)
     public ModelAndView addTrip(HttpServletRequest request,
-                                @ModelAttribute("trip") TripDTO trip ) {
+                                @ModelAttribute("tripDTO") TripDTO trip ) {
 
         AddTripRequest req = new AddTripRequest();
 
@@ -88,7 +88,12 @@ public class TripsMVCController{
         req.setOrigin(trip.getOrigin());
 
         AddTripResponse resp = addTripService.addTrip(req);
-        return new ModelAndView( "trips", "trips", resp);
+
+        ModelAndView mav = new ModelAndView("trip");
+        trip.setId(resp.getTripId());
+        mav.addObject("tripDTO", trip );
+        return mav;
+
 
     }
 

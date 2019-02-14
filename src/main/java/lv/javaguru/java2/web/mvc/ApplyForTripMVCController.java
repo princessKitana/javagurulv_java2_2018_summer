@@ -32,7 +32,9 @@ public class ApplyForTripMVCController {
         ApplyForTripResponse response = applyForTripService.applyForTrip(request);
         tpDTO.setId(response.getTripId());
 
-        return new ModelAndView( "trip", "tpDTO", tpDTO);
+        ModelAndView mav = new ModelAndView("trip");
+        mav.addObject("tpDTO", tpDTO);
+        return mav;
 
     }
 
